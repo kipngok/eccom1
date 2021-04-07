@@ -1,0 +1,229 @@
+ body{
+ font-family: 'Nunito', sans-serif;
+ font-family: 'Open Sans', sans-serif;
+ }
+ .row {
+margin: 5px;
+}
+ .sidebar{
+  padding-top: 100px;
+}
+.page-header{
+  background-color: #9da1a5; 
+  padding: 20px; 
+  width: 100%;
+  margin-bottom: 20px;
+}
+.sidebar{
+  width:200px;
+  float:left;
+  position:fixed;
+  background-color:#fdb819;
+  height:100vh;
+  margin-top: -70px;
+  
+}
+
+
+/*COLLAPSIBLE MENU*/
+
+.sidebar-menu li a {
+    text-transform: capitalize;
+    color: #312a2a;
+    font-weight: 400 !important;
+    padding: 5px;
+    display: block;
+    width: 100%;
+    padding-left: 20px;
+    font-size: 16px !important;
+    transition: ease-out 1s;
+}
+.sidebar-menu li{
+  list-style: none;
+}
+.sidebar-menu li a:hover{
+  text-decoration: none;
+  color: #FFF;
+  /*background-color: #949494;*/
+    transition: ease-in .5s;
+}
+.sidebar-menu li a.active{
+    text-decoration: none;
+    color: #fff;
+    background-color: #949494;
+}
+.sidebar-menu{
+  margin: 0px;
+  margin-top: 50px;
+    margin-bottom: 100px;
+  padding: 0px;
+}
+
+
+.nolist{
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.sidebar .sidebar-menu li.nolistHighlight {
+    background-color: #17629e;
+    color: #1FB9B9;
+    text-decoration: none
+}
+.sidebar .sidebar-menu li.nolistHighlight a {
+    color: #1FB9B9;
+}
+
+.sidebar .sidebar-menu li ul {
+    display: none;
+    background-color: #ffff;
+    /*-webkit-box-shadow: inset 0px 1px 2px 0px rgba(221,221,221,1);
+-moz-box-shadow: inset 0px 1px 2px 0px rgba(221,221,221,1);
+box-shadow: inset 0px 1px 2px 0px rgba(221,221,221,1);*/
+}
+.sidebar .sidebar-menu li ul li a {
+    font-size: 16px;
+    font-weight: 400;
+    color: #00000090;
+    padding-left: 10px;
+}
+.sidebar .sidebar-menu li ul li a.active {
+    background-color: initial;
+    color: #FFF;
+    padding-bottom: initial
+}
+.sidebar .sidebar-menu li ul li a:hover {
+    color:#000;
+    /*background-color: #DDDDDD50;*/
+}
+
+/*SCROLL BAR*/
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #FFF;
+
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: #eae9e8;
+  /*border-radius: 0.2em;*/
+  outline: 1px solid #dddddd;
+
+}
+
+
+.navy .fa-chevron-right{
+    float: right;
+    margin-right: 20px;
+    transition: ease-in-out .5s;
+}
+.navy.active .fa-chevron-right{
+transform: rotate(90deg);
+transition: ease-in-out .5s;
+}
+
+
+/*-----------------------------------------------*/
+
+
+
+.cont{
+  width:calc(100% - 180px);
+  margin-left:180px;
+  float:left; 
+}
+.main-content{
+  margin-top: 70px;
+  display: block;
+}
+.navio{
+  color: #242425;
+  padding:10px;
+  padding-left: 30px;
+  display: block;
+  width: calc(100% - 20px);
+  margin-left: 20px;
+  border-radius: 0px;
+  transition: ease-in-out .5s;
+  text-decoration: none;
+}
+.navio:hover{
+ 
+ text-decoration: none;
+ color: #000;
+ background-color: #FFF;
+}
+.navio.active{
+ 
+ text-decoration: none;
+ color: #000;
+ background-color: #FFF;
+}
+.bg-dark {
+    background-color: #000!important;
+
+  }
+  .bg-light {
+    background-color: #fdb819!important;
+}
+
+.only-mobile{
+  display: none;
+}
+.footer{
+  border-top:1px solid #DDDDDD;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+nav.navbar.navbar-expand-md.navbar-light.bg-light {
+    position: fixed;
+    width:100%;
+    margin: 0px;
+/*    display: block;*/
+    top: 0px;
+    background-color: #000 !important;
+    color: #FFF !important;
+}
+.marg-top{
+ /* margin-top: 50px;*/
+}
+
+
+@media only screen and (max-width: 990px){
+
+  .sidebar{
+    display: none;
+  }
+  .cont{
+  width:100%;
+  margin-left:0px;
+  float:left; 
+}
+.only-mobile{
+  display:block;
+}
+.nav-item{
+  border-bottom: 1px solid #DDDDDD;
+}
+.navbar-nav{
+  margin-top:15px;
+}
+.half{
+  width: 50%;
+}
+.no-mobile{
+  display: none;
+}
+nav.navbar.navbar-expand-md.navbar-light.bg-light {
+    background-color: #000 !important;
+    color: #FFF !important;
+}
+.navbar-light .navbar-nav .nav-link {
+    background-color: #fff !important;
+     color: #FFF !important
+}
