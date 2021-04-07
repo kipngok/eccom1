@@ -12,13 +12,12 @@
   <a  href="/productss/{{$product1->slug}}"><img height="200" src="/public{{$product1->getMedia('avatars')->first()->getUrl()}}"></a>
   <div class="card-body"><br>
   <div class="row">
-     <a class="product_name" href="/productss/{{$product1->slug}}" style="color: #000">{{ $product1->name }}</a>
+   <a class="product_name" href="/productss/{{$product1->slug}}" style="color: #000">{{ $product1->name}} </a>
   </div>
-
   <span class="new-price">Ksh {{ $product1->sale_price }}</span>
   <form action="" method="POST" class="cart-quantity">
   @csrf
-<div class="row">
+  <div class="row">
  <input type="hidden" name="quantity" id="quantity" value="1">
  <input type="hidden" name="id" id="id" value="{{$product1->id}}">
  <input type="hidden" name="name" id="name" value="{{$product1->name}}">
@@ -29,8 +28,7 @@
   </div>  
  </div>
  </div>
-
- </form>
+  </form>
   </div>
   </div>
   @endforeach
