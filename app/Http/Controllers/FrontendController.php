@@ -67,6 +67,14 @@ class FrontendController extends Controller
         return view('frontend.shoppage', compact('products'));
     }
 
+    public function checkout(){
+    
+        $products= Product::all();
+
+        return view('frontend.checkout', compact('products'));
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      *

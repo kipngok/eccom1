@@ -20,8 +20,7 @@
 
     </div>
     <div class="col-md-6">
-     
-  
+
       <p class="mb-2 text-muted text-uppercase small">Shirts</p>
   
       <p><span class="mr-1"><strong>$12.99</strong></span></p>
