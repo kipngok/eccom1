@@ -75,8 +75,8 @@ class RiderController extends Controller
      */
     public function edit(Rider $rider)
     {
-        // $this->authorize('update', $rider);
-        $users = User::all();
+        $this->authorize('update', $rider);
+        $users=User::all();
         return view('rider.edit', compact('rider','users'));
     }
     
