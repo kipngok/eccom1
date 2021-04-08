@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-sm-6">
         <form action="/sub_category/{{$sub_categories->id}}" method="POST">
-        {{csrf_field()}}
+        @csrf
         <input type="hidden" name="_method" value="PUT">
          <div class="form-group">
    	 	<label>Name</label>

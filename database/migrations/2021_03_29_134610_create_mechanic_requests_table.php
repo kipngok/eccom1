@@ -22,7 +22,6 @@ class CreateMechanicRequestsTable extends Migration
             $table->integer('model_id');
             $table->string('status');
             $table->string('approved');
-           
             $table->timestamps();
         });
     }

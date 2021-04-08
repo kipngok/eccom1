@@ -8,24 +8,26 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
-        <form action="/category/{{$categorys->id}}" method="POST">
-        {{csrf_field()}}
+        <form action="/category/{{$category->id}}" method="POST">
+        @csrf
         <input type="hidden" name="_method" value="PUT">
         <div class="form-group">
         <label>Category name</label>
-        <input type="text" name="name" class="form-control" value="{{$categorys->name}}">
+        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{$category->name}}">
+        @error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
         </div>
         <div class="form-group">
         <label>Slug</label>
-        <input type="text" name="slug" class="form-control" value="{{$categorys->slug}}">
+        <input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror" value="{{$category->slug}}">
+        @error('slug')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
         </div>
         <div class="form-group">
         <label>Order</label>
-        <input type="text" name="order" class="form-control" value="{{$categorys->order}}">
+        <input type="text" name="order" class="form-control @error('order') is-invalid @enderror" value="{{$category->order}}">
+        @error('order')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
         </div>
         <div class="form-group">
-        <button type="submit" class="btn btn-sm btn-success">Update
-        </button>
+        <button type="submit" class="btn btn-sm btn-success">Update</button>
         </div>
         </form>
         </div>

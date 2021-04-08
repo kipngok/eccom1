@@ -31,8 +31,7 @@ class BannerController extends Controller
     public function create()
     { 
         $this->authorize('create', Banner::class);
-        $banners= Banner::all();
-        return view('banner.create', compact('banners'));
+        return view('banner.create');
     }
 
     /**
@@ -43,7 +42,6 @@ class BannerController extends Controller
      */
     public function store(Request $request)
      {
-        // 'id','title','image','url','location'
         $this->authorize('create', Banner::class);
         $this->validate(request(), [
 
@@ -59,14 +57,11 @@ class BannerController extends Controller
             $fileName =md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
             $file->move('./public/images/',$fileName);
         }
-       $banners=Banner::create([
-            'title' => request()->get('title'),
-            'url' => request()->get('url'),
-            'location' => request()->get('location'),
-            'image'=>$fileName
 
-        ]);
-        return redirect('/banner/'.$banners->id);
+       $input=$request->all();
+       $input['image']=$fileName;
+       $banner=Banner::create($input);
+       return redirect('/banner/'.$banner->id);
 
     }
     /**
@@ -75,12 +70,11 @@ class BannerController extends Controller
      * @param  \App\Models\Banners  $banners
      * @return \Illuminate\Http\Response
      */
-    public function show($id, Banner $banners)
+    public function show(Banner $banner)
     {
         //
-        $this->authorize('view', $banners);
-        $banners=Banner::find($id);
-        return view('banner.show', compact('banners'));
+        $this->authorize('view', $banner);
+        return view('banner.show', compact('banner'));
     }
 
     /**
@@ -89,11 +83,10 @@ class BannerController extends Controller
      * @param  \App\Models\Banners  $banners
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Banner $banners)
+    public function edit(Banner $banner)
     {   
-        $this->authorize('update', $banners);
-        $banners=Banner::find($id);
-        return view('banner.edit', compact('banners'));
+        $this->authorize('update', $banner);
+        return view('banner.edit', compact('banner'));
     }
 
     /**
@@ -103,7 +96,7 @@ class BannerController extends Controller
      * @param  \App\Models\Banners  $banners
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, Banner $banners)
+    public function update(Request $request, Banner $banner)
     {
         //
 
@@ -121,14 +114,12 @@ class BannerController extends Controller
             $fileName =md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
             $file->move('./public/images/',$fileName);
         }
-       $banners=Banner::create([
-            'title' => request()->get('title'),
-            'url' => request()->get('url'),
-            'location' => request()->get('location'),
-            'image'=>$fileName
 
-        ]);
-        return redirect('/banner/'.$banners->id);
+       $input=$request->all();
+       $input['image']=$fileName;
+       $banner->update($input);
+
+       return redirect('/banner/'.$banner->id);
     }
 
     /**
@@ -137,11 +128,10 @@ class BannerController extends Controller
      * @param  \App\Models\Banners  $banners
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Banner $banners){
+    public function destroy(Banner $banner){
 
-        $this->authorize('delete', $banners);
-        $banners=Banner::find($id);
-        $banners->delete();
+        $this->authorize('delete', $banner);
+        $banner->delete();
         return redirect('/banner');
     }
 }

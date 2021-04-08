@@ -18,7 +18,7 @@
     </div>
     @endif
     <form action="/sub_category" method="POST">
-    {{csrf_field()}}
+    @csrf
     <div class="form-group">
     <label>Sub category name</label>
     <input type="text" name="name" class="form-control">

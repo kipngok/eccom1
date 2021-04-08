@@ -74,7 +74,7 @@
     </tbody>
     </table>
     <form action="/product/{{$product->id}}" method="POST">
-    {{csrf_field()}}
+    @csrf
     <input type="hidden" name="_method" value="DELETE">
     <div class="btn btn-group">
     <a href="/product/{{$product->id}}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Edit</a>

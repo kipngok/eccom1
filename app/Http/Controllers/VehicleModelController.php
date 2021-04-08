@@ -15,11 +15,9 @@ class VehicleModelController extends Controller
      */
     public function index()
     {   
-        // $this->authorize('viewAny', VehicleModel::class);
-        $makes= Make::all();
+        $this->authorize('viewAny', VehicleModel::class);
         $models = VehicleModel::orderBy('created_at','desc')->paginate(20);
-        return view('model.index',compact('models','makes'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('model.index',compact('models'))->with('i', (request()->input('page', 1) - 1) * 5);
         
     }
 
@@ -30,10 +28,9 @@ class VehicleModelController extends Controller
      */
     public function create()
     {
-        // $this->authorize('create', model::class);
-        $model= VehicleModel::all();
-        $make= Make::all();
-        return view('model.create', compact('model','make'));
+        $this->authorize('create', VehicleModel::class);
+        $makes=Make::all();
+        return view('model.create', compact('makes'));
     }
 
     /**
@@ -44,13 +41,14 @@ class VehicleModelController extends Controller
      */
     public function store(Request $request)
      {
+        $this->authorize('create', VehicleModel::class);
         $this->validate(request(),[
         'name'=>'required',
         'make_id'=>'required'
         ]);
         $input = $request->all();
-        VehicleModel::create( $input);
-        return redirect('/model/');
+        $model=VehicleModel::create($input);
+        return redirect('/model/'.$model->id);
 
     }
     /**
@@ -59,10 +57,10 @@ class VehicleModelController extends Controller
      * @param  \App\VehicleModels\model  $model
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(VehicleModel $model)
     {
         //
-        // $this->authorize('model.show', $model);
+        $this->authorize('view', $model);
         $model=VehicleModel::find($id);
         return view('model.show', compact('model'));
     }
@@ -73,10 +71,11 @@ class VehicleModelController extends Controller
      * @param  \App\VehicleModels\model  $model
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(VehicleModel $model)
     {
-        $model=VehicleModel::find($id);
-        return view('model.edit', compact('model'));
+        $this->authorize('update', $model);
+        $makes=Make::all();
+        return view('model.edit', compact('model','makes'));
     }
 
     /**
@@ -86,7 +85,7 @@ class VehicleModelController extends Controller
      * @param  \App\VehicleModels\model  $model
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, VehicleModel $model)
     {
         $this->authorize('update', $model);
          $this->validate($request(),[
@@ -94,7 +93,7 @@ class VehicleModelController extends Controller
         'make_id'=>'required'
         ]);
         $input = $request->all();
-        VehicleModel::update( $input);
+        $model->update( $input);
         return redirect('/model/'.$model->id);
     }
 
@@ -104,10 +103,9 @@ class VehicleModelController extends Controller
      * @param  \App\VehicleModel\model  $model
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
+    public function destroy(VehicleModel $model){
         //
         $this->authorize('delete', $model);
-        $model=VehicleModel::find($id);
         $model->delete();
         return redirect('/model');
     }

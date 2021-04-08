@@ -16,9 +16,9 @@ class CreateMechanicsTable extends Migration
         Schema::create('mechanics', function (Blueprint $table) {
              $table->increments('id');
             $table->string('location');
-            $table->string('latitude');
-            $table->string('longitude');
-            $table->integer('make_id');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->integer('make_ids');
             $table->string('status');
             $table->string('approved');
             $table->integer('user_id');

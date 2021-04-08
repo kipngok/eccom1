@@ -15,10 +15,9 @@ class SubCategoryController extends Controller
      */
     public function index()
     {   
-        $this->authorize('viewAny', Sub_category::class);
-        $categorys = Category::all();
-        $subcategorys = Sub_category::orderBy('created_at','desc')->paginate(20);
-        return view('subcategory.index',compact('subcategorys','categorys'))
+        $this->authorize('viewAny', SubCategory::class);
+        $subcategories = SubCategory::orderBy('created_at','desc')->paginate(20);
+        return view('subCategory.index',compact('subcategories'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
         
     }
@@ -30,10 +29,9 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', subcategory::class);
-        $category = Category::all();
-        $subcategory= Sub_category::all();
-        return view('subcategory.create', compact('subcategory','category'));
+        $this->authorize('create', SubCategory::class);
+        $categories = Category::all();
+        return view('subCategory.create', compact('categories'));
     }
 
     /**
@@ -44,75 +42,70 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
      {
-        $subcategory= Sub_category::all();
-
-        
+        $this->authorize('create', SubCategory::class);
         $this->validate(request(),[
         'name'=>'required',
         'category_id'=>'required'
         ]);
         $input = $request->all();
-        Sub_category::create( $input);
-        return redirect('/subcategory');
+        $subCategory=SubCategory::create( $input);
+        return redirect('/subCategory/'.$subCategory->id);
 
     }
     /**
      * Display the specified resource.
      *
-     * @param  \App\subcategorys\subcategorys  $subcategorys
+     * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(SubCategory $subCategory)
     {
         //
-        $this->authorize('subcategory.show', $subcategorys);
-        $subcategory=Sub_category::find($id);
-        return view('subcategory.show', compact('subcategory'));
+        $this->authorize('view', $subCategory);
+        return view('subCategory.show', compact('subCategory'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\subcategorys\subcategorys  $subcategorys
+     * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SubCategory $subCategory)
     {
-        $subcategory= Sub_category::all();
-        $subcategory::find($id);
-        return view('subcategory.edit', compact('subcategory'));
+        $this->authorize('update', $subCategory);
+        return view('subCategory.edit', compact('subCategory'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\subcategorys\subcategorys  $subcategorys
+     * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, SubCategory $subCategory)
     {
-        $this->authorize('update', $subcategorys);
+        $this->authorize('update', $subCategory);
         $this->validate($request(),[
         'name'=>'required',
         'category_id'=>'required'
         ]);
         $input = $request->all();
-        Sub_category::update( $input);
-        return redirect('/subcategory/'.$subcategorys->id);
+        $subCategory->update($input);
+        return redirect('/subCategory/'.$subCategory->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\subcategorys\subcategorys  $subcategorys
+     * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
+    public function destroy(SubCategory $subCategory){
         //
-        $this->authorize('delete', $subcategorys);
-        $subcategorys=Sub_category::find($id);
-        $subcategorys->delete();
-          return redirect('/subcategory');
+        $this->authorize('delete', $subCategory);
+        $subCategory->delete();
+          return redirect('/subCategory');
     }
 }

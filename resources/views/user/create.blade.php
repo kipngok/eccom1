@@ -11,7 +11,7 @@
 <div class="row">
 	<div class="col-sm-10">
 		<form action="/user" method="POST">
-			{{csrf_field()}}
+			@csrf
 			<div class="form-group">
 				<label>Name</label>
 				<input type="text" name="name" class="form-control">

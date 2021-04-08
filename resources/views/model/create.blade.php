@@ -18,19 +18,21 @@
     </div>
     @endif
 		<form action="/model" method="POST">
-			{{csrf_field()}}
+			@csrf
 		
 		<div class="form-group">
 		<label>Make</label>
-		<select class="form-control" name="make_id">
+		<select class="form-select @error('make_id') is-invalid @enderror" name="make_id">
         @foreach($makes as $make)
         <option value="{{$make->id}}">{{$make->name}}</option>
         @endforeach
         </select>
+        @error('make_id')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		<div class="form-group">
 		<label>Model name</label>
-		<input type="text" name="name" class="form-control">
+		<input type="text" name="name" class="form-control @error('name') is-invalid @enderror">
+		@error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		<div class="form-group">
 		<button type="submit" class="btn btn-sm btn-success">Save</button>
