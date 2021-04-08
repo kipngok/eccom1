@@ -8,24 +8,17 @@
 <div class="container">
 <div class="row">
 	<div class="col-sm-6">
-		 @if ($errors->any())
-    <div class="alert alert-danger mb-2">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
 		<form action="/make" method="POST">
-			{{csrf_field()}}
+			@csrf
 			<div class="form-group">
 				<label>Make</label>
-				<input type="text" name="name" class="form-control">
+				<input type="text" name="name" class="form-control @error('name') is-invalid @enderror">
+				@error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 			</div>
 			<div class="form-group">
 				<label>Order</label>
-				<input type="text" name="order" class="form-control">
+				<input type="text" name="order" class="form-control @error('order') is-invalid @enderror">
+				@error('order')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-sm btn-success">Save</button>

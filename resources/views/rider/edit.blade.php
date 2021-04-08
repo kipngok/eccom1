@@ -17,8 +17,8 @@
         </ul>
     </div>
     @endif
-		<form action="/rider/{{$riders->id}}" method="POST">
-			{{csrf_field()}}
+		<form action="/rider/{{$rider->id}}" method="POST">
+			@csrf
 				<div class="form-group">
 			<label>Rider</label>
 			<select class="form-control" name="user_id">
@@ -28,28 +28,28 @@
         	</select>
         	<div class="form-group">
 				<label>Type</label>
-				<input type="text" name="type" class="form-control" value="{{$riders->type}}">
+				<input type="text" name="type" class="form-control" value="{{$rider->type}}">
 			</div>
 			</div>
 			<div class="form-group">
 				<label>Regstration no</label>
-				<input type="text" name="reg_no" class="form-control" value="{{$riders->reg_no}}" >
+				<input type="text" name="reg_no" class="form-control" value="{{$rider->reg_no}}" >
 			</div>
 			<div class="form-group">
 				<label>City</label>
-				<input type="text" name="city" class="form-control"  value="{{$riders->city}}">
+				<input type="text" name="city" class="form-control"  value="{{$rider->city}}">
 			</div>
 			<div class="form-group">
 				<label>Status</label>
-				<input type="text" name="status" class="form-control"  value="{{$riders->status}}">
+				<input type="text" name="status" class="form-control"  value="{{$rider->status}}">
 			</div>
 			<div class="form-group">
 				<label>Longtitude</label>
-				<input type="text" name="longitude" class="form-control"  value="{{$riders->longitude}}">
+				<input type="text" name="longitude" class="form-control"  value="{{$rider->longitude}}">
 			</div>
 			<div class="form-group">
 				<label>Latitude</label>
-				<input type="text" name="latitude" class="form-control"  value="{{$riders->latitude}}">
+				<input type="text" name="latitude" class="form-control"  value="{{$rider->latitude}}">
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-sm btn-success">Update</button>

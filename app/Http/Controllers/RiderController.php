@@ -15,11 +15,8 @@ class RiderController extends Controller
       public function index()
     {   
         $this->authorize('viewAny', Rider::class);
-        $users = User::all();
         $riders = Rider::orderBy('created_at','desc')->paginate(20);
-        return view('rider.index',compact('riders','users'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-        
+        return view('rider.index',compact('riders'))->with('i', (request()->input('page', 1) - 1) * 5); 
     }
 
     /**
@@ -29,10 +26,9 @@ class RiderController extends Controller
      */
     public function create()
     {
-        // $this->authorize('create', rider::class);
-        $user = User::all();
-        $rider= Rider::all();
-        return view('rider.create', compact('rider','user'));
+        $this->authorize('create', Rider::class);
+        $users=User::all();
+        return view('rider.create', compact('users'));
     }
 
     /**
@@ -43,6 +39,7 @@ class RiderController extends Controller
      */
     public function store(Request $request)
      {
+        $this->authorize('create', Rider::class);
         $this->validate(request(),[
         'user_id'=>'required',
         'reg_no'=>'required',
@@ -52,12 +49,9 @@ class RiderController extends Controller
         'longitude'=>'required',
         'latitude'=>'required'
         ]);
-        $inputs = $request->all();
-        $rider = Rider::all();
-
-        // $inputs['user_id']=Auth::user()->id;
-        Rider::create( $inputs);
-        return redirect('/rider/');
+        $input = $request->all();
+        $rider=Rider::create($input);
+        return redirect('/rider/'.$rider->id);
 
     }
     /**
@@ -66,11 +60,10 @@ class RiderController extends Controller
      * @param  \App\rider\rider  $rider
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Rider $rider)
     {
         //
-        // $this->authorize('rider.show', $rider);
-        $rider=Rider::find($id);
+        $this->authorize('view', $rider);
         return view('rider.show', compact('rider'));
     }
 
@@ -80,9 +73,9 @@ class RiderController extends Controller
      * @param  \App\rider\rider  $rider
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Rider $rider)
     {
-        $rider=Rider::find($id);
+        $this->authorize('update', $rider);
         return view('rider.edit', compact('rider'));
     }
 
@@ -93,7 +86,7 @@ class RiderController extends Controller
      * @param  \App\rider\rider  $rider
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Rider $rider)
     { 
         $this->authorize('update', $rider);
         $this->validate($request(),[
@@ -106,8 +99,8 @@ class RiderController extends Controller
         'latitude'=>'required'
         ]);
         $input = $request->all();
-        $input['user_id']=Auth::user()->id;
-        Rider::update( $input);
+        $rider->update($input);
+
         return redirect('/rider/'.$rider->id);
     }
 
@@ -117,12 +110,10 @@ class RiderController extends Controller
      * @param  \App\rider\rider  $rider
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
+    public function destroy(Rider $rider){
         //
-       
-        $rider=Rider::find($id);
         $this->authorize('delete', $rider);
         $rider->delete();
-          return redirect('/rider');
+        return redirect('/rider');
     }
 }

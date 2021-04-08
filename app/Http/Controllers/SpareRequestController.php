@@ -15,10 +15,8 @@ class SpareRequestController extends Controller
     public function index()
     {   
         $this->authorize('viewAny', SpareRequest::class);
-        $sparerequests = SpareRequest::orderBy('created_at','desc')->paginate(20);
-        return view('sparerequest.index',compact('sparerequests'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-        
+        $sparerRquests = SpareRequest::orderBy('created_at','desc')->paginate(20);
+        return view('spareRequest.index',compact('spareRequests'))->with('i', (request()->input('page', 1) - 1) * 5);  
     }
 
     /**
@@ -28,9 +26,8 @@ class SpareRequestController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', sparerequest::class);
-        $sparerequest= SpareRequest::all();
-        return view('sparerequest.create', compact('sparerequest'));
+        $this->authorize('create', SpareRequest::class);
+        return view('spareRequest.create');
     }
 
     /**
@@ -41,7 +38,7 @@ class SpareRequestController extends Controller
      */
     public function store(Request $request)
      {
-        
+        $this->authorize('create', SpareRequest::class);
         $this->validate($request(),[
         'photo'=>'required',
         'email'=>'required',
@@ -49,50 +46,49 @@ class SpareRequestController extends Controller
         'make_id'=>'required',
         'model_id'=>'required',
         'status'=>'required',
-        'subcategory_id'=>'required',
-         'category_id'=>'required'
+        'sub_category_id'=>'required',
+        'category_id'=>'required'
         ]);
         $input = $request->all();
-        SpareRequest::create( $input);
-        return redirect('/sparerequest/'.$sparerequest->id);
+        $spareRequest=SpareRequest::create( $input);
+        return redirect('/spareRequest/'.$spareRequest->id);
 
     }
     /**
      * Display the specified resource.
      *
-     * @param  \App\sparerequest\sparerequest  $sparerequest
+     * @param  \App\Models\SpareRequest  $spareRequest
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(SpareRequest $spareRequest)
     {
         //
-        $this->authorize('sparerequest.show', $sparerequest);
-        $sparerequest=SpareRequest::find($id);
-        return view('sparerequest.show', compact('sparerequest'));
+        $this->authorize('view', $spareRequest);
+        return view('spareRequest.show', compact('spareRequest'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\sparerequest\sparerequest  $sparerequest
+     * @param  \App\Models\SpareRequest  $spareRequest
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SpareRequest $spareRequest)
     {
-        $sparerequest=SpareRequest::find($id);
-        return view('sparerequest.edit', compact('sparerequest'));
+        $this->authorize('update', $spareRequest);
+        return view('spareRequest.edit', compact('spareRequest'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\sparerequest\sparerequest  $sparerequest
+     * @param  \App\Models\SpareRequest  $spareRequest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, SpareRequest $spareRequest)
     { 
-        $this->authorize('update', $sparerequest);
+        $this->authorize('update', $spareRequest);
         $this->validate($request(),[
         'photo'=>'required',
         'email'=>'required',
@@ -100,25 +96,24 @@ class SpareRequestController extends Controller
         'make_id'=>'required',
         'model_id'=>'required',
         'status'=>'required',
-        'subcategory_id'=>'required',
+        'sub_category_id'=>'required',
          'category_id'=>'required'
         ]);
         $input = $request->all();
-        SpareRequest::update( $input);
-        return redirect('/sparerequest/'.$sparerequest->id);
+        $spareRequest->update($input);
+        return redirect('/spareRequest/'.$spareRequest->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\sparerequest\sparerequest  $sparerequest
+     * @param  \App\Models\SpareRequest  $spareRequest
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
+    public function destroy(SpareRequest $spareRequest){
         //
-        $this->authorize('delete', $sparerequest);
-        $sparerequest=SpareRequest::find($id);
-        $sparerequest->delete();
-          return redirect('/sparerequest');
+        $this->authorize('delete', $spareRequest);
+        $spareRequest->delete();
+        return redirect('/spareRequest');
     }
 }

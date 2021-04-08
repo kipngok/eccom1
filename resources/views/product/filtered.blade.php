@@ -6,7 +6,7 @@
   	 </div>
     </div>
     <form action="/process" method="POST">
-  	{{csrf_field()}}
+  	@csrf
 	<input type="hidden" name="url" value="product">
 	<div class="container">
 	 <div class="row">

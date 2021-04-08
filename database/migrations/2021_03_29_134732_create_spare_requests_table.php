@@ -21,7 +21,7 @@ class CreateSpareRequestsTable extends Migration
             $table->integer('make_id');
             $table->integer('model_id');
             $table->string('status');
-            $table->integer('subcategory_id');
+            $table->integer('sub_category_id');
             $table->integer('category_id');
             $table->timestamps();
         });

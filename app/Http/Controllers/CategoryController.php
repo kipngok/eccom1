@@ -30,8 +30,7 @@ class CategoryController extends Controller
     public function create()
     {
         $this->authorize('Create', Category::class);
-        $category= Category::all();
-        return view('category.create', compact('category'));
+        return view('category.create');
     }
 
     /**
@@ -56,27 +55,25 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\categorys  $categorys
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
         //
-        // $this->authorize('view', $category);
-        $category=Category::find($id);
+        $this->authorize('view', $category);
         return view('category.show', compact('category'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\categorys  $categorys
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Category $category)
+    public function edit(Category $category)
     {   
         $this->authorize('update', $category);
-        $category=Category::find($id);
         return view('category.edit', compact('category'));
     }
 
@@ -84,10 +81,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\categorys  $categorys
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         $this->authorize('update', $category);
          $this->validate($request(), [
@@ -96,20 +93,18 @@ class CategoryController extends Controller
         'order'=>'required'
         ]);
         $input = $request->all();
-        Category::update( $input);
+        $category->update( $input);
         return redirect('/category/');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\categorys  $categorys
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
+    public function destroy(Category $category){
         //
-        
-        $category=Category::find($id);
         $this->authorize('delete', $category);
         $category->delete();
         return redirect('/category');

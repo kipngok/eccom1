@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MechanicRequest extends Model
 {
     use HasFactory;
-    protected $fillable = [
-      'id','mechanic_id','user_id','notes','make_id','model_id','status','approved'];
+    protected $fillable = ['id','mechanic_id','user_id','notes','make_id','model_id','status','approved'];
     public function mechanic(){
   	return $this->hasOne('App\Model\Mechanic', 'id','mechanic_id' );
     }

@@ -29,8 +29,7 @@ class CouponController extends Controller
     public function create()
     {
         $this->authorize('create', Coupon::class);
-        $coupon= Coupon::all();
-        return view('coupon.create', compact('coupon'));
+        return view('coupon.create');
     }
 
     /**
@@ -41,6 +40,7 @@ class CouponController extends Controller
      */
     public function store(Request $request)
      {
+        $this->authorize('create', Coupon::class);
         $this->validate(request(), [
         'code'=>'required',
         'type'=>'required',
@@ -55,27 +55,25 @@ class CouponController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\coupon  $coupon
+     * @param  \App\Models\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Coupon $coupon)
     {
         //
-        $coupon=Coupon::find($id);
         $this->authorize('view', $coupon);
-     
         return view('coupon.show', compact('coupon'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\coupon  $coupon
+     * @param  \App\Models\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Coupon $coupon)
     {
-        $coupon=Coupon::find($id);
+        $this->authorize('update', $coupon);
         return view('coupon.edit', compact('coupon'));
     }
 
@@ -83,33 +81,31 @@ class CouponController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\coupon  $coupon
+     * @param  \App\Models\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Coupon $coupon)
     {
-        //'id','name','slug','order'
-    $this->authorize('update', $coupon);
-   $this->validate($request(), [
+        $this->authorize('update', $coupon);
+        $this->validate($request(), [
         'code'=>'required',
         'type'=>'required',
         'value'=>'required',
         'expiry_date'=>'required'
         ]);
         $input = $request->all();
-        Category::update( $input);
+        $coupon->update( $input);
         return redirect('/coupon/'.$coupon->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\coupon  $coupon
+     * @param  \App\Models\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
+    public function destroy(Coupon $coupon){
         //
-        $coupon=Coupon::find($id);
         $this->authorize('delete', $coupon);
         $coupon->delete();
         return redirect('/coupon');

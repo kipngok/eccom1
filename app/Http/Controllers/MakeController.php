@@ -40,25 +40,25 @@ class MakeController extends Controller
      */
     public function store(Request $request)
      {
+        $this->authorize('create', Make::class);
         $this->validate(request(), [
         'name'=>'required',
         'order'=>'required'
         ]);
         $input = $request->all();
-        Make::create( $input);
+        Make::create($input);
         return redirect('/make/'.$make->id);
 
     }
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\make  $make
+     * @param  \App\Models\Make  $make
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Make $make)
     {
         
-        $make=Make::find($id);
         $this->authorize('view', $make);
         return view('make.show', compact('make'));
     }
@@ -66,12 +66,12 @@ class MakeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\make  $make
+     * @param  \App\Models\Make  $make
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Make $make)
     {
-        $make=Make::find($id);
+        $this->authorize('update', $make);
         return view('make.edit', compact('make'));
     }
 
@@ -79,31 +79,29 @@ class MakeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\make  $make
+     * @param  \App\Models\Make  $make
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Make $make)
     {
-      $this->authorize('update', $make);
-      $this->validate(request(), [
-        'name'=>'required',
-        'order'=>'required'
+        $this->authorize('update', $make);
+        $this->validate(request(), [
+            'name'=>'required',
+            'order'=>'required'
         ]);
         $input = $request->all();
-        Make::update( $input);
+        $make->update($input);
         return redirect('/make/'.$make->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\make  $make
+     * @param  \App\Models\Make  $make
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
+    public function destroy(Make $make){
         //
-        
-        $make=Make::find($id);
         $this->authorize('delete', $make);
         $make->delete();
         return redirect('/make');

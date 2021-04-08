@@ -13,7 +13,7 @@
 <div class="row">
 	<div class="col-sm-10">
 		<form action="/user/{{$user->id}}" method="POST">
-			{{csrf_field()}}
+			@csrf
 			<input type="hidden" name="_method" value="PUT">
 			<div class="form-group">
 				<label>Name</label>

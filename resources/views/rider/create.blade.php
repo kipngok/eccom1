@@ -18,7 +18,7 @@
     </div>
     @endif
 		<form action="/rider" method="POST">
-			{{csrf_field()}}
+			@csrf
 				<div class="form-group">
 			<label>Rider</label>
 			<select class="form-control" name="user_id">

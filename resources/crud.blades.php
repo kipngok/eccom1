@@ -47,7 +47,7 @@ Banner create
     </div>
     @endif
 		<form action="/banner" method="POST" enctype="multipart/form-data">
-			{{csrf_field()}}
+			@csrf
 			<div class="form-group">
 				<label>Title</label>
 				<input type="text" name="title" class="form-control">
@@ -115,7 +115,7 @@ edit banner
 	<div class="row">
 		<div class="col-sm-6">
 		<form action="/banner/{{$banner->id}}" method="POST" enctype="multipart/form-data">
-		{{csrf_field()}}
+		@csrf
 		<input type="hidden" name="_method" value="PUT">
 		<div class="form-group">
 		<label>Title</label>
@@ -166,7 +166,7 @@ show blade
 		</tbody>
 		</table>
 		<form action="/banner/{{$banners->id}}" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<input type="hidden" name="_method" value="DELETE">
 		<div class="btn btn-group">
 		<a href="/banner/{{$banners->id}}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Edit</a>
@@ -205,7 +205,7 @@ Create
     </div>
     @endif
 		<form action="/banner" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<div class="form-group">
 		<label>Category name</label>
 		<input type="text" name="name" class="form-control">
@@ -266,7 +266,7 @@ edit category
 	<div class="row">
 		<div class="col-sm-6">
 		<form action="/category/{{$categorys->id}}" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<input type="hidden" name="_method" value="PUT">
 		<div class="form-group">
 		<label>Category name</label>
@@ -312,7 +312,7 @@ show blade category
 		</tbody>
 		</table>
 		<form action="/category/{{$categorys->id}}" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<input type="hidden" name="_method" value="DELETE">
 		<div class="btn btn-group">
 		<a href="/category/{{$categorys->id}}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Edit</a>
@@ -344,7 +344,7 @@ Create
     </div>
     @endif
 		<form action="/coupon" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<div class="form-group">
 		<label>Coupon code</label>
 		<input type="text" name="code" class="form-control">
@@ -411,7 +411,7 @@ edit coupons
 	<div class="row">
 		<div class="col-sm-6">
 		<form action="/category/{{$coupons->id}}" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<input type="hidden" name="_method" value="PUT">
 		<div class="form-group">
 		<label>Coupon code</label>
@@ -465,7 +465,7 @@ show blade coupons
 		</tbody>
 		</table>
 		<form action="/coupon/{{$coupons->id}}" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<input type="hidden" name="_method" value="DELETE">
 		<div class="btn btn-group">
 		<a href="/coupon/{{$coupons->id}}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Edit</a>
@@ -499,7 +499,7 @@ Create
     </div>
     @endif
 		<form action="/make" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<div class="form-group">
 		<label>Product name</label>
 		<input type="text" name="name" class="form-control">
@@ -660,7 +660,7 @@ edit product
 	<div class="row">
 		<div class="col-sm-6">
 		<form action="/product/{{$products->id}}" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<input type="hidden" name="_method" value="PUT">
 		<div class="form-group">
 		<label>Product name</label>
@@ -781,7 +781,7 @@ show blade product
 		</tbody>
 		</table>
 		<form action="/product/{{$product->id}}" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<input type="hidden" name="_method" value="DELETE">
 		<div class="btn btn-group">
 		<a href="/product/{{$products->id}}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Edit</a>
@@ -908,7 +908,7 @@ role edit
 	<div class="row">
 		<div class="col-sm-6">
 		<form action="/product/{{$products->id}}" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<input type="hidden" name="_method" value="PUT">
 		<div class="form-group">
 		<label>Role name</label>
@@ -939,7 +939,7 @@ role show
 		</tbody>
 		</table>
 		<form action="/role/{{$role->id}}" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<input type="hidden" name="_method" value="DELETE">
 		<div class="btn btn-group">
 		<a href="/role/{{$roles->id}}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Edit</a>
@@ -956,7 +956,7 @@ create role
 	<div class="row">
 		<div class="col-sm-6">
 		<form action="/role/{{$roles->id}}" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<input type="hidden" name="_method" value="PUT">
 		<div class="form-group">
 		<label>Role name</label>
@@ -991,7 +991,7 @@ create edit
 	<div class="row">
 		<div class="col-sm-6">
 		<form action="/role/{{$roles->id}}" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<input type="hidden" name="_method" value="PUT">
 		<div class="form-group">
 		<label>Role name</label>
@@ -1063,7 +1063,7 @@ create
     </div>
     @endif
 		<form action="/make" method="POST">
-			{{csrf_field()}}
+			@csrf
 			<div class="form-group">
 				<label>Make</label>
 				<input type="text" name="name" class="form-control">
@@ -1116,7 +1116,7 @@ edit make
 	<div class="row">
 		<div class="col-sm-6">
 		<form action="/make/{{$make->id}}" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<input type="hidden" name="_method" value="PUT">
 		<div class="form-group">
 		<label>Make</label>
@@ -1154,7 +1154,7 @@ show blade
 		</tbody>
 		</table>
 		<form action="/make/{{$makes->id}}" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<input type="hidden" name="_method" value="DELETE">
 		<div class="btn btn-group">
 		<a href="/make/{{$makes->id}}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Edit</a>
@@ -1182,7 +1182,7 @@ Mechanic blade
     </div>
     @endif
 		<form action="/make" method="POST">
-			{{csrf_field()}}
+			@csrf
 				<div class="form-group">
 				<label>Make</label>
 				<select class="form-control" name="sub_category_id">
@@ -1258,7 +1258,7 @@ edit mechanic
 <div class="row">
 	<div class="col-sm-6">
 		<form action="/mechanic" method="POST">
-			{{csrf_field()}}
+			@csrf
 				<div class="form-group">
 				<label>Make</label>
 				<select class="form-control" name="sub_category_id">
@@ -1320,7 +1320,7 @@ show blade
 		</tbody>
 		</table>
 		<form action="/mechanic/{{$mechanics->id}}" method="POST">
-		{{csrf_field()}}
+		@csrf
 		<input type="hidden" name="_method" value="DELETE">
 		<div class="btn btn-group">
 		<a href="/mechanic/{{$mechanics->id}}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Edit</a>
