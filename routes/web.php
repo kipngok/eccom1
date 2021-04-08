@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::resource('/homepage','App\Http\Controllers\FrontendController');
 Route::get('/productss/{slug}','App\Http\Controllers\FrontendController@show')->name('frontend.singleproduct');
 Route::get('/shop','App\Http\Controllers\FrontendController@shop')->name('frontend.shoppage');
-Route::get('/checkout','App\Http\Controllers\FrontendController@checkout')->name('frontend.checkout');
 
 Auth::routes();
 

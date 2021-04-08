@@ -14,9 +14,9 @@ class OrderItemController extends Controller
      */
      public function index()
     {   
-        $this->authorize('viewAny', Orderitem::class);
-        $orderitems = OrderItem::orderitemBy('created_at','desc')->paginate(20);
-        return view('orderitem.index',compact('orderitems'))
+        $this->authorize('viewAny', OrderItem::class);
+        $orderItems = OrderItem::orderBy('created_at','desc')->paginate(20);
+        return view('orderItem.index',compact('orderItems'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
         
     }
@@ -28,9 +28,8 @@ class OrderItemController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', orderitem::class);
-     
-        return view('orderitem.create', compact('orderitem'));
+        $this->authorize('create', OrderItem::class);
+        return view('orderItem.create', compact('orderItem'));
     }
 
     /**
@@ -41,77 +40,76 @@ class OrderItemController extends Controller
      */
     public function store(Request $request)
      {
+        $this->authorize('create', OrderItem::class);
         $this->validate($request(),[
         'product_id'=>'required',
-        'orderitem_id'=>'required',
+        'orderItem_id'=>'required',
         'qty'=>'required',
         'price'=>'required',
         'amount'=>'required'
         ]);
         $input = $request->all();
-        OrderItem::create( $input);
-        return redirect('/orderitem/'.$orderitems->id);
+        $orderItem=OrderItem::create($input);
+        return redirect('/orderItem/'.$orderItem->id);
 
     }
     /**
      * Display the specified resource.
      *
-     * @param  \App\orderitems\orderitems  $orderitems
+     * @param  \App\Models\OrderItem  $orderItems
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Orderitem $orderItem)
     {
         //
-        $this->authorize('orderitem.show', $orderitems);
-        $orderitem=OrderItem::find($id);
-        return view('orderitem.show', compact('orderitem'));
+        $this->authorize('view', $orderItem);
+        return view('orderItem.show', compact('orderItem'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\orderitems\orderitems  $orderitems
+     * @param  \App\Models\OrderItem  $orderItems
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Orderitem $orderItem)
     {
-        $orderitem=OrderItem::find($id);
-        return view('orderitem.edit', compact('orderitem'));
+        $this->authorize('update', $orderItem);
+        return view('orderItem.edit', compact('orderItem'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\orderitems\orderitems  $orderitems
+     * @param  \App\Models\OrderItem  $orderItems
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Orderitem $orderItem)
     { 
-        $this->authorize('update', $orderitem);
+        $this->authorize('update', $orderItem);
         $this->validate($request(),[
         'product_id'=>'required',
-        'orderitem_id'=>'required',
+        'orderItem_id'=>'required',
         'qty'=>'required',
         'price'=>'required',
         'amount'=>'required'
         ]);
         $input = $request->all();
-        OrderItem::update( $input);
-        return redirect('/orderitem/'.$orderitem->id);
+        $orderItem->update( $input);
+        return redirect('/orderItem/'.$orderItem->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\orderitems\orderitems  $orderitems
+     * @param  \App\Models\OrderItem  $orderItems
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
+    public function destroy(Orderitem $orderItem){
         //
-        $this->authorize('delete', $orderitem);
-        $orderitem=OrderItem::find($id);
-        $orderitem->delete();
-        return redirect('/orderitem');
+        $this->authorize('delete', $orderItem);
+        $orderItem->delete();
+        return redirect('/orderItem');
     }
 }

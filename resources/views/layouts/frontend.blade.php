@@ -15,30 +15,27 @@
 <body>
 <!-- Navbar -->
 <!-- <nav class="navbar navbar-dark bg-dark"> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-<div class="container-fluid" style="background-color: #0e0e0e; height: 100px;">
-  <div class="panel panel-default">
-    <div class="container">
-      <div class="row">
-    <div class="col-sm-6">
-      <div class="panel-heading" style="margin-top: 20px;">
-        <a href="">
+  	<div class="container">
+  	<div class="row">
+  	<div class="col-sm-3">
+  	 <div class="logo pb-sm-30 pb-xs-30">
+	 <a href="">
       <img src="{{ asset('img/sukilogo.jpg') }}" alt="SUKISPARES" style="height:60px;">
       </a>
-    </div>
-    </div>
-      <div class="col-sm-6">
-      <div class="panel-heading">Panel wHeading</div>
-    </div>
-    </div>
-    </div>
-    
-  </div>
-</div>
+      </div>
+  	</div>
+  	<div class="col-sm-9">
 
+  	</div>
+  </div> 
 
-
-
+  <span class="navbar-text">
+      <!--   Navbar text with an inline element -->
+  </span>
+    </div>
+</nav>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">
 <div class="container">
@@ -58,9 +55,6 @@
 </li>
 <li class="nav-item">
   <a class="nav-link active" href="#">About us</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link active" href="#">Contact us</a>
 </li>
 </ul>
 </div>

@@ -16,7 +16,7 @@ Create.blade.php
     </div>
     @endif
 		<form action="/make" method="POST">
-			{{csrf_field()}}
+			@csrf
 			<div class="form-group">
 				<label>Make</label>
 				<input type="text" name="name" class="form-control">

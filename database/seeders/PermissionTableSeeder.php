@@ -18,6 +18,9 @@ class PermissionTableSeeder extends Seeder
 
 	// Role::create(['name' => 'Dispatch officer']);
 
+    Role::create(['name' => 'Admin']);
+    Role::create(['name' => 'User']);
+
 	Permission::create(['name' => 'Create Banner']);
 	Permission::create(['name' => 'View Banner']);
 	Permission::create(['name' => 'Edit Banner']);

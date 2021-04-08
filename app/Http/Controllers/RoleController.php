@@ -28,7 +28,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        
+        $this->authorize('create', Role::class);   
         $permissions = Permission::all();
         return view('role.create',compact('permissions'));
         //
@@ -55,6 +55,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Role::class);   
         $this->validate($request, [
             'name' => 'required',
         ]);
@@ -71,12 +72,11 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Role $role)
     {
         //
-        $role = Role::find($id);
+        $this->authorize('view', $role);
         $permissions=Permission::all();
-        /*$this->authorize('view', $role);*/
         return view('role.show',compact('role','permissions'));
     }
 
@@ -86,10 +86,10 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
         //
-        $role = Role::find($id);
+        $this->authorize('update', $role);
         $permissions = Permission::all();
         return view('role.edit', compact('role','permissions'));
     }
@@ -101,16 +101,15 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
         //
+        $this->authorize('update', $role);
         $this->validate($request, [
             'name' => 'required',
         ]);
         $input=$request->all();
-        $role = Role::find($id);
-        /*$this->authorize('update', $role);*/
-        $role->update( $input);
+        $role->update($input);
         $role->syncPermissions($request->input('permissions'));
 
         return redirect('/role/'.$role->id)->with('Role updated successfully');
@@ -123,11 +122,10 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
         //
-     $this->authorize('delete', $roles);
-        $roles=Role::find($id);
+        $this->authorize('delete', $role);
         $roles->delete();
         return redirect('/role');
     }

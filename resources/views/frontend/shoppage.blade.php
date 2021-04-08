@@ -12,7 +12,7 @@
   <a  href="/productss/{{$product1->slug}}"><img height="200" src="/public{{$product1->getMedia('avatars')->first()->getUrl()}}"></a>
   <div class="card-body"><br>
   <div class="row">
-  <a class="product_name" href="/productss/{{$product1->slug}}" style="color: #000">{{ $product1->name}}</a>
+   <a class="product_name" href="/productss/{{$product1->slug}}" style="color: #000">{{ $product1->name}} </a>
   </div>
   <span class="new-price">Ksh {{ $product1->sale_price }}</span>
   <form action="" method="POST" class="cart-quantity">

@@ -6,7 +6,7 @@
   	 </div>
     </div>
     <form action="/process" method="POST">
-  	{{csrf_field()}}
+  	@csrf
 	<input type="hidden" name="url" value="product">
 	<div class="container">
 	 <div class="row">
@@ -27,7 +27,7 @@
   	<label>Sub Category</label>
   	<select class="form-control" name="subCategory">
   	<option value="All">All</option>
-     @foreach($subCategory as $subCategory)
+     @foreach($subCategories as $subCategory)
      @if(isset($filters['subCategory']) && $filters['subCategory']==$subCategory->id)
      <option value="{{$subCategory->id}}" selected="selected">{{$subCategory->name}}</option>
      @else

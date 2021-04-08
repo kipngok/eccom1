@@ -22,7 +22,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($sub_categories as $subcategory) 
+        @foreach($subCategories as $subcategory) 
         <tr>
         <td>{{ ++$i }}</td>
         <td>{{$subcategory->name}}</td>

@@ -9,10 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 class VehicleModel extends Model
 {
     use HasFactory;
-    protected $fillable = [
-    	'id','name','make_id'];
+    protected $fillable = ['id', 'name', 'make_id'];
+    
   	public function models(){
-   	return $this->hasOne('App\Models\Make', 'id','make_id')->withDefault(['name'=>'Deleted']);
-  }
+   		return $this->hasOne('App\Models\Make', 'id', 'make_id')->withDefault(['name'=>'Deleted']);
+  	}
 }
 

@@ -8,6 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Make extends Model
 {
     use HasFactory;
-    protected $fillable = [
-    'id','name','order'];
+    protected $fillable = ['id','name','order'];
 }

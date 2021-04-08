@@ -4,24 +4,27 @@
 
   <div class="card">
   <div class="card-body">
- 
+  <div class="container">
   <div class="row">
-  <div class="col-md-4">
-  <h1>Hello</h1>
+  <div class="col-sm-4">
+  <h1>HEllo</h1>
 
 
   </div>
-  <div class="col-md-8">
+  <div class="col-sm-8">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="{{ asset('img/2.jpg') }}" width="80px" alt="First slide">
+    <a class="navbar-brand" href="{{ url('/homepage') }}" style="padding: 0px;">
+    <img src="{{ asset('img/download.png') }}" alt="First slide" style="height:60px;">
+    </a>
+      <img class="d-block w-100" src="..." alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="{{ asset('img/3.jpg') }}" alt="Second slide">
+      <img class="d-block w-100" src="..." alt="Second slide">
     </div>
     <div class="carousel-item">
-     <img class="d-block w-100" src="{{ asset('img/3.jpg') }}" alt="First slide">
+      <img class="d-block w-100" src="..." alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -36,25 +39,21 @@
 
   </div>   
   </div>  
-
+  </div>
 
   </div>
   </div> 
 <!-- ------ New Arrivals-------- -->
-<div class="row">
-  <div class="col-md-3">
-    
-  </div>
-  <div class="col-md-9">
+
   <div class="card">
   <div class="card-header">
     NEW ARRIVALS
   </div>
   <!--product card -->
-  <div class="row">
+  <div class="row" style="margin: 20px;">
   @foreach ($products as $product1)
-  <div class="text-center" style="margin-top: 5px;">
-  <a  href="/productss/{{$product1->slug}}"><img height="100px" src="/public{{$product1->getMedia('avatars')->first()->getUrl()}}"></a>
+  <div class="text-center">
+  <a  href="/productss/{{$product1->slug}}"><img height="200" src="/public{{$product1->getMedia('avatars')->first()->getUrl()}}"></a>
   <div class="card-body"><br>
   <a class="product_name" href="" style="color: #000">{{ $product1->name }}</a><br>
   <span class="new-price">Ksh {{ $product1->sale_price }} </span>
@@ -76,12 +75,11 @@
   </div>
   @endforeach
   </div>
-  </div>
-
-  </div>
   
-</div>
+ 
+  <!-- end product card -->
 
+  </div>
   <!-- ------------Featured--------------------- -->
  <div class="card">
   <div class="card-header">

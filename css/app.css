@@ -14,7 +14,6 @@ margin: 5px;
   width: 100%;
   margin-bottom: 20px;
 }
-
 .sidebar{
   width:200px;
   float:left;
@@ -25,13 +24,6 @@ margin: 5px;
   
 }
 
-h1.checkout-heading {
-    margin-top: 40px;
-}
-h1.stylish-heading {
-    margin-bottom: 60px;
-    position: relative;
-}
 
 /*COLLAPSIBLE MENU*/
 
@@ -235,13 +227,3 @@ nav.navbar.navbar-expand-md.navbar-light.bg-light {
     background-color: #fff !important;
      color: #FFF !important
 }
-.hm-searchbox {
-    display: flex;
-    position: relative;
-    background: #fff;
-    border-radius: 5px;
-    border: 1px solid #e1e1e1;
-    min-width: 638px;
-    height: 45px;
-    float: left;
-  }

@@ -27,7 +27,7 @@
   </div>
  
   <form action="/user/{{$user->id}}" method="POST">
-  {{csrf_field()}}
+  @csrf
   <input type="hidden" name="_method" value="DELETE">
   <div class="btn btn-group">
   <a href="/user/{{$user->id}}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Edit</a>

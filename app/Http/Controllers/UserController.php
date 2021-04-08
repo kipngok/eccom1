@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Hash;
 class UserController extends Controller
 {
     /**
@@ -16,10 +17,9 @@ class UserController extends Controller
      public function index()
     {
         //
-
+        $this->authorize('viewAny', User::class);
         $users = User::orderBy('created_at','desc')->paginate(20);
-        return view('user.index',compact('users'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('user.index',compact('users'))->with('i', (request()->input('page', 1) - 1) * 5);
         
     }
   
@@ -31,6 +31,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        $this->authorize('create', User::class);
         $permissions=Permission::all();
         $roles=Role::all();
         return view('user.create',compact('permissions','roles'));
@@ -45,6 +46,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $this->authorize('create', User::class);
         $input=$request->all();
         $input['password']=Hash::make($input['password']);
         $user=User::create($input);
@@ -59,10 +61,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
         //
-        $user=User::find($id);
+        $this->authorize('view', $user);
         $permissions=Permission::all();
         return view('user.show', compact('user','permissions'));
     }
@@ -73,10 +75,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
         //
-        $user=User::find($id);
+        $this->authorize('update', $user);
         $permissions=Permission::all();
         $roles=Role::all();
         return view('user.edit', compact('user','permissions','roles'));
@@ -89,10 +91,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
         //
-        $user=User::find($id);
+        $this->authorize('update', $user);
         $input=$request->all();
         if(!empty($input['password'])){
             $input['password']=Hash::make($input['password']);
@@ -110,10 +112,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
         //
-        $user=User::find($id);
+        $this->authorize('delete', $user);
         $user->delete();
         return redirect('/user');
     }

@@ -17,8 +17,6 @@ class MechanicController extends Controller
      public function index()
     {   
         $this->authorize('viewAny', Mechanic::class);
-        $users = User::all();
-        $make = Make::all();
         $mechanics = Mechanic::orderBy('created_at','desc')->paginate(20);
         return view('mechanic.index',compact('mechanics','make','users'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -33,11 +31,10 @@ class MechanicController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', mechanic::class);
-        $user = User::all();
-        $make = Make::all();
-        $mechanic= Mechanic::all();
-        return view('mechanic.create', compact('mechanic','make','user'));
+        $this->authorize('create', Mechanic::class);
+        $users = User::all();
+        $makes = Make::all();
+        return view('mechanic.create', compact('makes','users'));
     }
 
     /**
@@ -48,7 +45,7 @@ class MechanicController extends Controller
      */
     public function store(Request $request)
      {
-         // 'id','location','latitude','longitude','make_id','status','approved','user_id'
+         $this->authorize('create', Mechanic::class);
         $this->validate(request(),[
         'location'=>'required',
         'latitude'=>'required',
@@ -58,49 +55,47 @@ class MechanicController extends Controller
         'approved'=>'required'
         ]);
         $input = $request->all();
-        Mechanic::create( $input);
-        return redirect('/mechanic/');
+        $input['make_ids']=implode(',', $input['make_id']);
+        $mechanic=Mechanic::create( $input);
+        return redirect('/mechanic/'.$mechanic->id);
 
     }
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\mechanic  $mechanic
+     * @param  \App\Models\Mechanic  $mechanic
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Mechanic $mechanic)
     {
         //
-        // $this->authorize('mechanic.show', $mechanic);
-        $make = Make::all();
-        $mechanic=Mechanic::find($id);
-        // dd($mechanic);
-        return view('mechanic.show', compact('mechanic','make'));
+        $this->authorize('view', $mechanic);
+        return view('mechanic.show', compact('mechanic'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\mechanic  $mechanic
+     * @param  \App\Models\Mechanic  $mechanic
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Mechanic $mechanic)
     {
-        $mechanic=Mechanic::find($id);
-        $make = Make::all();
-        return view('mechanic.edit', compact('mechanic','make'));
+        $this->authorize('update', $mechanic);
+        $makes = Make::all();
+        return view('mechanic.edit', compact('mechanic','makes'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\mechanic  $mechanic
+     * @param  \App\Models\Mechanic  $mechanic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id){
+    public function update(Request $request, Mechanic $mechanic){
 
-        $this->authorize('update', $categorys);
+        $this->authorize('update', $mechanic);
         $this->validate($request(),[
         'location'=>'required',
         'latitude'=>'required',
@@ -109,20 +104,19 @@ class MechanicController extends Controller
         'approved'=>'required'
         ]);
         $input = $request->all();
-        Mechanics::update( $input);
+        $input['make_ids']=implode(',', $input['make_id']);
+        $mechanic->update( $input);
         return redirect('/mechanic/'.$mechanic->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\mechanic  $mechanic
+     * @param  \App\Models\Mechanic  $mechanic
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
+    public function destroy(Mechanic $mechanic){
         //
-         
-        $mechanic=Mechanic::find($id);
         $this->authorize('delete', $mechanic);
         $mechanic->delete();
         return redirect('/mechanic');

@@ -8,10 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Rider extends Model
 {
     use HasFactory;
-    protected $fillable = [
-    'id','user_id','reg_no','type','status','city','longitude',
-	'latitude'];
+    protected $fillable = ['id', 'user_id', 'reg_no', 'type', 'status', 'city', 'longitude', 'latitude'];
 	public function user(){
-   	return $this->hasOne('App\Models\User', 'id','user_id');
+   	return $this->hasOne('App\Models\User', 'id', 'user_id');
   	}
 }

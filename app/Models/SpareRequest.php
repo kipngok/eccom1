@@ -8,19 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class SpareRequest extends Model
 {
     use HasFactory;
-    protected $fillable = [
-      	'id','photo','email','notes','make_id','model_id','status','subcategory_id','category_id'];
+    protected $fillable = ['id', 'photo', 'email', 'notes', 'make_id', 'model_id', 'status', 'sub_category_id', 'category_id'];
 
     public function make(){
-    return $this->hasOne('App\Models\Make', 'id','make_id');
+    return $this->hasOne('App\Models\Make', 'id', 'make_id');
     }
     public function make(){
-    return $this->hasOne('App\Models\Model', 'id','model_id');
+    return $this->hasOne('App\Models\Model', 'id', 'model_id');
     }
     public function subcategory(){
-    return $this->hasOne('App\Models\Sub_category', 'id','subcategory_id');
+    return $this->hasOne('App\Models\Sub_category', 'id', 'sub_category_id');
     }
     public function category(){
-    return $this->hasOne('App\Models\Category', 'id','category_id');
+    return $this->hasOne('App\Models\Category', 'id', 'category_id');
     }
 }

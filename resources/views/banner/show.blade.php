@@ -9,25 +9,24 @@
 <div class="container">
     <div class="row">
     <div class="col-sm-6">
-      <!-- 'id','title','image','url','location', -->
     <table class="table table-condensed table-striped table-bordered">
     <tbody>
     <tr>
     <th>Title</th>
-    <td>{{$banners->title}}</td>
+    <td>{{$banner->title}}</td>
     </tr>
     <tr>
     <th>Url</th>
-    <td>{{$banners->url}}</td>
+    <td>{{$banner->url}}</td>
     </tr>
     <tr>
     <th>Location</th>
-    <td>{{$banners->location}}</td>
+    <td>{{$banner->location}}</td>
     </tr>
     </tbody>
     </table>
     <form action="/banner/{{$banners->id}}" method="POST">
-    {{csrf_field()}}
+    @csrf
     <input type="hidden" name="_method" value="DELETE">
     <div class="btn btn-group">
     <a href="/banner/{{$banners->id}}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Edit</a>
