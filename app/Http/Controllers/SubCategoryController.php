@@ -18,9 +18,8 @@ class SubCategoryController extends Controller
         $this->authorize('viewAny', SubCategory::class);
         $subCategories = SubCategory::orderBy('created_at','desc')->paginate(20);
         return view('subCategory.index',compact('subcategories'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-        
-    }
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+     }
 
     /**
      * Show the form for creating a new resource.

@@ -101,7 +101,6 @@ class RiderController extends Controller
         ]);
         $input = $request->all();
         $rider->update($input);
-
         return redirect('/rider/'.$rider->id);
     }
 
