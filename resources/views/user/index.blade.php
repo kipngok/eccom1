@@ -14,7 +14,7 @@
 	  <table class="table table-bordered">
 	 <thead>
 	<tr>
-	<th>NO</th>
+	<th>#</th>
 	<th>Name</th>
 	<th>Email</th>
 	<th>Action</th>
@@ -22,12 +22,12 @@
 	</thead>
 	<tbody>
 	@foreach($users as $user)
-  <tr> <td>{{ ++$i }}</td>
-					<td>{{$user->name}}</td>
-					<td>{{$user->email}}</td>
-					<td><a href="/user/{{$user->id}}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> view</a></td>
-				</tr>
-				@endforeach
+  	<tr><td>{{ ++$i }}</td>
+		<td>{{$user->name}}</td>
+		<td>{{$user->email}}</td>
+		<td><a href="/user/{{$user->id}}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> view</a></td>
+	</tr>
+	@endforeach
 				
 			</tbody>
 		</table>

@@ -15,19 +15,19 @@
         <table class="table table-bordered">
         <thead>
         <tr> 
-        <th>NO</th>  
-        <th>Category name</th>
-        <th>Category</th>
-        <th>Action</th>
+            <th>#</th>  
+            <th>Category name</th>
+            <th>Category</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($sub_categories as $subcategory) 
+        @foreach($subCategories as $subCategory) 
         <tr>
-        <td>{{ ++$i }}</td>
-        <td>{{$subcategory->name}}</td>
-        <td>{{$subcategory->category->name}}</td>
-        <td><a href="/sub_category/{{$subcategory->id}}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i>view</a></td>
+            <td>{{ ++$i }}</td>
+            <td>{{$subCategory->name}}</td>
+            <td>{{$subCategory->category->name}}</td>
+            <td><a href="/sub_category/{{$subCategory->id}}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i>view</a></td>
         </tr>
         @endforeach
         </tbody>

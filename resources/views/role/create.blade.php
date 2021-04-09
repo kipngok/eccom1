@@ -12,7 +12,8 @@
 		@csrf
 		<div class="form-group">
 		<label>Role</label>
-		<input type="text" name="name" class="form-control">
+		<input type="text" name="name" class="form-control  @error('name') is-invalid @enderror" value="{{ old('name') }}">
+		@error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		<div class="form-group">
 		<strong>Permission</strong>

@@ -13,15 +13,17 @@
         <input type="hidden" name="_method" value="PUT">
          <div class="form-group">
    	 	<label>Name</label>
-    	<input type="text" name="name" class="form-control" value="{{$sub_categories->name}}"  >
+    	<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{$sub_categories->name}}">
+        @error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
     	</div>
    		<div class="form-group">
 		<label>Category</label>
-		<select class="form-control" name="category_id">
+		<select class="form-select @error('category_id') is-invalid @enderror" name="category_id">
     	 @foreach($categories as $category)
      	<option value="{{$category->id}}">{{$category->name}}</option>
      	@endforeach
      	 </select>
+         @error('category_id')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
         <div class="form-group">
         <button type="submit" class="btn btn-sm btn-success">Update

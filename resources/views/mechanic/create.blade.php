@@ -30,28 +30,28 @@
 				</div>
 				<div class="form-group">
 				<label>Longitude</label>
-				<input type="text" name="longitude" class="form-control @error('longitude') is-invalid @enderror">
+				<input type="text" name="longitude" class="form-control @error('longitude') is-invalid @enderror" value="{{ old('longitude') }}">
 				@error('longitude')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 				</div>
 				<div class="form-group">
 				<label>Latitude</label>
-				<input type="text" name="latitude" class="form-control @error('latitude') is-invalid @enderror">
+				<input type="text" name="latitude" class="form-control @error('latitude') is-invalid @enderror" value="{{ old('latitude') }}">
 				@error('latitude')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 				</div>
 				<div class="form-group">
 				<label>Location</label>
-				<input type="text" name="location" class="form-control @error('location') is-invalid @enderror">
+				<input type="text" name="location" class="form-control @error('location') is-invalid @enderror" value="{{ old('location') }}">
 				@error('location')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 				</div>
 				<div class="form-group">
 				<label>Status</label>
-				<input type="text" name="status" class="form-control @error('status') is-invalid @enderror">
+				<input type="text" name="status" class="form-control @error('status') is-invalid @enderror" value="{{ old('status') }}">
 				@error('status')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 				</div>
 			
 			<div class="form-group">
 				<label>Approved</label>
-				<input type="text" name="approved" class="form-control @error('approved') is-invalid @enderror">
+				<input type="text" name="approved" class="form-control @error('approved') is-invalid @enderror" value="{{ old('approved') }}">
 				@error('approved')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 			</div>
 			<div class="form-group">
