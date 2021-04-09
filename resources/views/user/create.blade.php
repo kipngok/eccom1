@@ -14,23 +14,27 @@
 			@csrf
 			<div class="form-group">
 				<label>Name</label>
-				<input type="text" name="name" class="form-control">
+				<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+				@error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 			</div>
 			<div class="form-group">
 				<label>Roles</label>
-				<select name="role_id" class="form-control" id="role_id" required="required">
+				<select name="role_id" class="form-select @error('role_id') is-invalid @enderror" id="role_id" required="required">
 					@foreach($roles as $role)
 					<option value="{{$role->id}}">{{$role->name}}</option>
 					@endforeach
 				</select>
+				@error('role_id')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 			</div>
 			<div class="form-group">
 				<label>Email</label>
-				<input type="email" name="email" class="form-control">
+				<input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
+				@error('email')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 			</div>
 			<div class="form-group">
 				<label>Password</label>
-				<input type="password" name="password" class="form-control">
+				<input type="password" name="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}">
+				@error('password')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 			</div>
 			<div class="form-check form-check-inline">
   			<input class="form-check-input" type="checkbox" value="1" name="is_admin">

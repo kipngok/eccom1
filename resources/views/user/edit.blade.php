@@ -17,11 +17,12 @@
 			<input type="hidden" name="_method" value="PUT">
 			<div class="form-group">
 				<label>Name</label>
-				<input type="text" name="name" class="form-control" value="{{$user->name}}">
+				<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{$user->name}}">
+				@error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 			</div>
 			<div class="form-group">
 				<label>Roles</label>
-				<select name="role_id" class="form-control" id="role_id" required="required">
+				<select name="role_id" class="form-control @error('role_id') is-invalid @enderror" id="role_id" required="required">
 					@foreach($roles as $role)
 					@if($role->id == $user->role_id)
 					<option value="{{$role->id}}" selected="selected">{{$role->name}}</option>
@@ -30,14 +31,17 @@
 					@endif
 					@endforeach
 				</select>
+				@error('role_id')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 			</div>
 			<div class="form-group">
 				<label>Email</label>
-				<input type="email" name="email" class="form-control" value="{{$user->email}}">
+				<input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{$user->email}}">
+				@error('email')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 			</div>
 			<div class="form-group">
 				<label>Password <small>Leave blank to retain previous password</small></label>
-				<input type="password" name="password" class="form-control">
+				<input type="password" name="password" class="form-control @error('password') is-invalid @enderror">
+				@error('password')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 			</div>
 			<div class="form-check form-check-inline">
 			<input type="hidden" name="is_admin" value="0">

@@ -15,7 +15,8 @@
 		<input type="hidden" name="_method" value="PUT">
 		<div class="form-group">
 		<label>Role name</label>
-		<input type="text" name="name" class="form-control" value="{{$role->name}}">
+		<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{$role->name}}">
+		@error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		<div class="form-group">
 		<label>Permission</label>

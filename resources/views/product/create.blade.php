@@ -13,7 +13,7 @@
 		 @csrf
 		<div class="form-group">
 		<label>Product name</label>
-		<input type="text" name="name" class="form-control @error('name') is-invalid @enderror">
+		<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
 		@error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		<div class="row">
@@ -44,45 +44,45 @@
 		<div class="col-sm-4">
 		<div class="form-group">
 		<label>Price</label>
-		<input type="text" name="price" class="form-control @error('price') is-invalid @enderror">
+		<input type="text" name="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}">
 		@error('price')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		</div>	
 		<div class="col-sm-4">
 		<div class="form-group">
 		<label>Sale price</label>
-		<input type="text" name="sale_price" class="form-control @error('sale_price') is-invalid @enderror">
+		<input type="text" name="sale_price" class="form-control @error('sale_price') is-invalid @enderror" value="{{ old('sale_price') }}">
 		@error('sale_price')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		</div>
 		<div class="col-sm-4">
 		<div class="form-group">
 		<label>Quantity</label>
-		<input type="text" name="quantity" class="form-control @error('quantity') is-invalid @enderror">
+		<input type="text" name="quantity" class="form-control @error('quantity') is-invalid @enderror" value="{{ old('quantity') }}">
 		@error('quantity')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		</div>	
 		</div>
 		<div class="form-group">
 		<label>Slug</label>
-		<input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror">
+		<input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror" value="{{ old('slug') }}">
 		@error('slug')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		<div class="form-group">
 		<label>Product description</label>
-		<textarea name="description" class="form-control @error('description') is-invalid @enderror"></textarea>
+		<textarea name="description" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}"></textarea>
 		@error('description')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		<div class="form-group">
 		<label>Featured</label>
-		<input type="text" name="featured" class="form-control @error('featured') is-invalid @enderror">
+		<input type="text" name="featured" class="form-control @error('featured') is-invalid @enderror" value="{{ old('featured') }}">
 		@error('featured')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		<div class="row">
 		<div class="col-sm-6">
 		<div class="form-group">
 		<label>Image</label>
-		<input type="file"  name="image1" class="form-control @error('image1') is-invalid @enderror" id="image" placeholder="Upload image">
+		<input type="file"  name="image1" class="form-control @error('image1') is-invalid @enderror" value="{{ old('image1') }}" id="image" placeholder="Upload image">
 		@error('image1')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 
 		</div>
@@ -90,7 +90,7 @@
 		<div class="col-sm-6">
 		<div class="form-group">
 		<label>Image</label>
-		<input type="file" name="image2" class="form-control @error('image2') is-invalid @enderror">
+		<input type="file" name="image2" class="form-control @error('image2') is-invalid @enderror" value="{{ old('image2') }}">
 		@error('image2')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		</div>
@@ -99,14 +99,14 @@
 		<div class="col-sm-6">
 		<div class="form-group">
 		<label>Image</label>
-		<input type="file" name="image3" class="form-control @error('image3') is-invalid @enderror">
+		<input type="file" name="image3" class="form-control @error('image3') is-invalid @enderror" value="{{ old('image3') }}">
 		@error('image3')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>	
 		</div>
 		<div class="col-sm-6">
 		<div class="form-group">
 		<label>Image</label>
-		<input type="file" name="image4" class="form-control @error('image4') is-invalid @enderror">
+		<input type="file" name="image4" class="form-control @error('image4') is-invalid @enderror" value="{{ old('image4') }}">
 		@error('image4')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		</div>
@@ -115,7 +115,7 @@
 		<div class="col-sm-4">
 		<div class="form-group">
 		<label>Make</label>
-		<select class="form-control @error('make_id') is-invalid @enderror" name="make_id">
+		<select class="form-select @error('make_id') is-invalid @enderror" name="make_id">
         @foreach($make as $make)
         <option value="{{$make->id}}">{{$make->name}}</option>
         @endforeach
@@ -126,7 +126,7 @@
 		<div class="col-sm-4">
 		<div class="form-group">
 		<label>Model</label>
-		<select class="form-control @error('model_id') is-invalid @enderror" name="model_id">
+		<select class="form-select @error('model_id') is-invalid @enderror" name="model_id">
         @foreach($model as $model)
         <option value="{{$model->id}}">{{$model->name}}</option>
         @endforeach
@@ -137,24 +137,24 @@
 		<div class="col-sm-4">
 		<div class="form-group">
 		<label>Year</label>
-		<input type="text" name="year" class="form-control @error('year') is-invalid @enderror">
+		<input type="text" name="year" class="form-control @error('year') is-invalid @enderror" value="{{ old('year') }}">
 		@error('year')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		</div>	
 		</div>
 		<div class="form-group">
 		<label>Engine</label>
-		<input type="text" name="engine" class="form-control @error('engine') is-invalid @enderror">
+		<input type="text" name="engine" class="form-control @error('engine') is-invalid @enderror" value="{{ old('engine') }}">
 		@error('engine')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		<div class="form-group">
 		<label>Fuel</label>
-		<input type="text" name="fuel" class="form-control @error('fuel') is-invalid @enderror">
+		<input type="text" name="fuel" class="form-control @error('fuel') is-invalid @enderror" value="{{ old('fuel') }}">
 		@error('fuel')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		<div class="form-group">
 		<label>Status</label>
-		<input type="text" name="status" class="form-control @error('status') is-invalid @enderror">
+		<input type="text" name="status" class="form-control @error('status') is-invalid @enderror" value="{{ old('status') }}">
 		@error('status')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		<div class="form-group">
