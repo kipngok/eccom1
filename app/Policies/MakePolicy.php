@@ -57,7 +57,7 @@ class MakePolicy
     public function update(User $user, Make $make)
     {
         //
-         return $user->can('Update Make');
+         return $user->can('Edit Make');
     }
 
     /**

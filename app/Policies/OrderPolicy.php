@@ -56,7 +56,7 @@ class OrderPolicy
     public function update(User $user, Order $order)
     {
         //
-         return $user->can('Update Order');
+         return $user->can('Edit Order');
     }
 
     /**

@@ -57,7 +57,7 @@ class CouponPolicy
     public function update(User $user, Coupon $coupon)
     {
         //
-        return $user->can('Update Coupon');
+        return $user->can('Edit Coupon');
     }
 
     /**

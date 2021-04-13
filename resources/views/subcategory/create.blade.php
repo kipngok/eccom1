@@ -8,7 +8,7 @@
 <div class="container">
 <div class="row">
   <div class="col-sm-6">
-    <form action="/sub_category" method="POST">
+    <form action="/subCategory" method="POST">
     @csrf
     <div class="form-group">
     <label>Sub category name</label>
@@ -26,7 +26,7 @@
 	</div>
     <div class="form-group">
     <button type="submit" class="btn btn-sm btn-success">Save</button>
-    <a href="/sub_category" class="btn btn-sm btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back</a>
+    <a href="/subCategory" class="btn btn-sm btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back</a>
     </div>
     </form>
   </div>

@@ -57,7 +57,7 @@ class SubCategoryPolicy
     public function update(User $user, SubCategory $subCategory)
     {
         //
-        return $user->can('Update SubCategory');
+        return $user->can('Edit SubCategory');
     }
 
     /**

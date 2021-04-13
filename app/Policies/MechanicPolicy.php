@@ -57,7 +57,7 @@ class MechanicPolicy
     public function update(User $user, Mechanic $mechanic)
     {
         //
-        return $user->can('Update Mechanic');
+        return $user->can('Edit Mechanic');
     }
 
     /**

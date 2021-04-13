@@ -57,7 +57,7 @@ class ProductPolicy
     public function update(User $user, Product $product)
     {
         //
-         return $user->can('Update Product');
+         return $user->can('Edit Product');
     }
 
     /**

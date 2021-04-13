@@ -57,7 +57,7 @@ class CategoryPolicy
     public function update(User $user, Category $category)
     {
         //
-       return $user->can('Update Category');
+       return $user->can('Edit Category');
     }
 
     /**

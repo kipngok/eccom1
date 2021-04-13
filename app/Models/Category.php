@@ -11,9 +11,9 @@ class Category extends Model
     protected $fillable = ['id','name','slug','order'];
 
     public function products(){
-        return $this->hasMany('App\Modes\Product', 'category_id', 'id')->withDefault(['name'=>'Deleted']);
+        return $this->hasMany('App\Modes\Product', 'category_id', 'id');
         }
-    public function sub_category(){
-        return $this->hasMany('App\Models\Product', 'category_id', 'id')->withDefault(['name'=>'Deleted']);
+    public function subCategories(){
+        return $this->hasMany('App\Models\SubCategory', 'category_id', 'id');
         }
 }

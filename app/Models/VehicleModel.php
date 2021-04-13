@@ -11,8 +11,8 @@ class VehicleModel extends Model
     use HasFactory;
     protected $fillable = ['id', 'name', 'make_id'];
     
-  	public function models(){
-   		return $this->hasOne('App\Models\Make', 'id', 'make_id')->withDefault(['name'=>'Deleted']);
+  	public function make(){
+   		return $this->hasOne('App\Models\Make', 'id', 'make_id');
   	}
 }
 

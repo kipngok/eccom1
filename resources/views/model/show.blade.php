@@ -9,22 +9,22 @@
 		<div class="row">
 		<div class="col-sm-6">
 		<table class="table table-condensed table-striped table-bordered">
-		<tbody>
-		<tr>
-		<th>Model</th>
-		<td>{{$models->name}}</td>
-		</tr>
-		<tr>
-		<th>Make</th>
-		<td>{{$models->make}}</td>
-		</tr>
-		</tbody>
+			<tbody>
+				<tr>
+					<th>Model</th>
+					<td>{{$model->name}}</td>
+				</tr>
+				<tr>
+					<th>Make</th>
+					<td>{{$model->make}}</td>
+				</tr>
+			</tbody>
 		</table>
-		<form action="/model/{{$models->id}}" method="POST">
+		<form action="/model/{{$model->id}}" method="POST">
 		@csrf
 		<input type="hidden" name="_method" value="DELETE">
 		<div class="btn btn-group">
-		<a href="/model/{{$models->id}}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Edit</a>
+		<a href="/model/{{$model->id}}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Edit</a>
 		<button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete </button>
 		<a href="/model" class="btn btn-sm btn-success"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back</a>
 		</div>

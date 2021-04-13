@@ -58,7 +58,7 @@ class MechanicRequestPolicy
     public function update(User $user, MechanicRequest $mechanicRequest)
     {
         //
-        return $user->can('Update MechanicRequest');
+        return $user->can('Edit MechanicRequest');
     }
 
     /**

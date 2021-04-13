@@ -33,6 +33,11 @@ class VehicleModelController extends Controller
         return view('model.create', compact('makes'));
     }
 
+    public function models($id){
+        $models=VehicleModel::where('make_id','=',$id)->get();
+        return view('model.get',compact('models'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

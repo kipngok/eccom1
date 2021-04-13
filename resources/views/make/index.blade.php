@@ -12,24 +12,24 @@
 <div class="row">
 	<div class="col-sm-12">
 		<table class="table table-bordered">
-		<thead>
-		<tr> 
-        <th>NO</th>  
-        <th>Make</th>
-        <th>Order</th>
-        <th>Action</th>
-        </tr>
-		</thead>
-		<tbody>
-        @foreach($makes as $make) 
-        <tr>
-        <td>{{ ++$i }}</td>
-        <td>{{$make->name}}</td>
-        <td>{{$make->order}}</td>
-        <td><a href="/make/{{$make->id}}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> view</a></td>
-        </tr>
-        @endforeach
-        </tbody>
+    		<thead>
+        		<tr> 
+                    <th>#</th>  
+                    <th>Make</th>
+                    <th>Order</th>
+                    <th>Action</th>
+                </tr>
+    		</thead>
+    		<tbody>
+            @foreach($makes as $make) 
+                <tr>
+                    <td>{{ ++$i }}</td>
+                    <td>{{$make->name}}</td>
+                    <td>{{$make->order}}</td>
+                    <td><a href="/make/{{$make->id}}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> view</a></td>
+                </tr>
+            @endforeach
+            </tbody>
 		</table>
 		{{$makes->links()}}
 	</div>

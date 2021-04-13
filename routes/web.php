@@ -34,6 +34,7 @@ Route::resource('/coupon','App\Http\Controllers\CouponController');
 Route::resource('/make','App\Http\Controllers\MakeController');
 Route::resource('/mechanic','App\Http\Controllers\MechanicController');
 Route::resource('/mechanic_request','App\Http\Controllers\MechanicRequestController');
+Route::get('/vehicleModel/get/{id}','App\Http\Controllers\VehicleModelController@models');
 Route::resource('/model','App\Http\Controllers\VehicleModelController');
 Route::resource('/order','App\Http\Controllers\OrderController');
 
@@ -43,11 +44,8 @@ Route::get('/product/{category_id}/{subCategory}','App\Http\Controllers\ProductC
 Route::post('/process', 'App\Http\Controllers\Controller@process');
 Route::resource('/rider','App\Http\Controllers\RiderController');
 Route::resource('/spare_request','App\Http\Controllers\Spare_requestController');
-Route::resource('/sub_category','App\Http\Controllers\SubCategoryController');
-	
-
-
-
+Route::get('/subCategory/get/{id}','App\Http\Controllers\SubCategoryController@subCategories');
+Route::resource('/subCategory','App\Http\Controllers\SubCategoryController');
 
 
 

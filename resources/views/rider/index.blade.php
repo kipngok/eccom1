@@ -11,7 +11,7 @@
 		<table class="table table-bordered">
 		<thead>
 		<tr> 
-        <th>NO</th>  
+        <th>#</th>  
         <th>Name</th>
         <th>Reg.No</th>
          <th>Type</th>

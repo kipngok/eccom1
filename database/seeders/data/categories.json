@@ -1,0 +1,202 @@
+[
+   {
+      "category":"Service Parts",
+      "sub_categories":[
+         "Air Filters",
+         "Brake Discs",
+         "Brake Pads",
+         "Fuel Filters",
+         "Glow Plugs",
+         "Oil Filters",
+         "Other Filters",
+         "Pollen Filters",
+         "Spark Plugs",
+         "Major Service",
+         "Distributor Caps",
+         "Rotor Arms",
+         "Tensioners Idlers & Dampers",
+         "Timing Belt Kits",
+         "Timing Belts"
+      ]
+   },
+   {
+      "category":"Brakes",
+      "sub_categories":[
+         "ABS Ring",
+         "Brake Disc Dust Shield",
+         "Brake Discs",
+         "Brake Drums",
+         "Brake Pad Wear Sensors",
+         "Brake Pads",
+         "Brake Shoes",
+         "Handbrake Cables",
+         "Handbrake Shoes",
+         "Brake Hydraulics",
+         "ABS Controllers",
+         "ABS Hydraulic Units",
+         "ABS Sensors",
+         "Brake Calipers",
+         "Brake Fluid",
+         "Master Cylinders",
+         "Reservoir & Caps",
+         "Vacuum Pumps",
+         "Wheel Cylinders"
+      ]
+   },
+   {
+      "category":"Engine Parts",
+      "sub_categories":[
+         "Cylinder Head",
+         "Engine Bearings",
+         "Head Bolts",
+         "Belts Chains & Tensioners",
+         "Drive Belts",
+         "Timing Belt Kits",
+         "Timing Chains",
+         "Filters",
+         "Air Filters",
+         "Oil Filters",
+         "Pollen Filters",
+         "Ignition",
+         "Glow Plugs",
+         "Ignition Coils",
+         "Rotor Arms",
+         "Spark Plugs",
+         "Fuel & Engine Management",
+         "EGR Valves",
+         "Fuel Hoses",
+         "Fuel Injection Parts",
+         "Fuel Injectors",
+         "Turbos",
+         "Dump Valves/ BOV",
+         "Turbo Chargers",
+         "Turbo Hoses",
+         "Turbocharger Gaskets"
+      ]
+   },
+   {
+      "category":"Suspension & Steering",
+      "sub_categories":[
+         "Anti Roll Bar & Components",
+         "Bushes",
+         "Coil Springs",
+         "Engine Mount",
+         "Rear Axle Carriers",
+         "Shock Absorbers",
+         "Suspension Arms & Joints",
+         "Suspension Mountings",
+         "Suspension Spheres",
+         "X- Members",
+         "Boots & Gaskets",
+         "Centre Drag Links",
+         "Column Parts & Couplings",
+         "Dampers",
+         "Idler & Pitman Arms",
+         "PAS Pumps",
+         "Steering Boxes",
+         "Steering Racks & Mounts",
+         "Track Rods & Ends"
+      ]
+   },
+   {
+      "category":"Transmission",
+      "sub_categories":[
+         "Clutch Cables",
+         "Clutch Covers",
+         "Clutch Dampers",
+         "Clutch Hydraulics",
+         "Clutch Parts",
+         "Clutch kits",
+         "Flywheels",
+         "Solid Flywheel Conversions",
+         "Spigot Bearing & Freewheel Clutchs",
+         "CV Boot Kits",
+         "CV Joint Kits",
+         "Drive Couplings & Universal Joints",
+         "Gearboxes & Linkages",
+         "Propshafts & Components",
+         "Seals",
+         "Stub Axles",
+         "Syncro Parts",
+         "Wheel Bearings & Hubs"
+      ]
+   },
+   {
+      "category":"Cooling & Heating",
+      "sub_categories":[
+         "Expansion Tanks",
+         "Intercoolers",
+         "Radiators",
+         "Thermostats",
+         "Air Conditioning",
+         "Compressors",
+         "Condensers",
+         "Evaporators",
+         "Expansion Valves",
+         "Heater Cables",
+         "Heater Matrix",
+         "Heater Motors",
+         "Other Heating Parts"
+      ]
+   },
+   {
+      "category":"Electrical & Lighting",
+      "sub_categories":[
+         "Car Battery",
+         "Motorcycle Battery",
+         "Starter Motors",
+         "Tyre Pressure Sensors",
+         "Lighting",
+         "Headlights",
+         "Indicators",
+         "Licence Plate Lights",
+         "Rear Lights",
+         "Ignition",
+         "Distributors",
+         "Glow Plugs",
+         "Ignition Leads",
+         "Spark Plugs"
+      ]
+   },
+   {
+      "category":"Body & Exhaust",
+      "sub_categories":[
+         "Body Shop",
+         "Body Mouldings",
+         "Body Panels",
+         "Grilles",
+         "Wing Mirrors",
+         "Wheel And Tyre Parts",
+         "Locking Wheel Kits",
+         "Tyre Pressure Monit...",
+         "Wheel Bolts",
+         "Wheel Nuts",
+         "Cables",
+         "Accelerator Cable",
+         "Clutch Cables",
+         "Handbrake Cables",
+         "Speedo Cables",
+         "Wipers",
+         "Washer System",
+         "Wiper Arms & Motors",
+         "Wiper Blades",
+         "Exhausts",
+         "Diesel Particulate Filter",
+         "Exhaust Parts",
+         "Exhaust System",
+         "Lambda Sensors",
+         "Interior",
+         "Tailored Car Mats"
+      ]
+   },
+   {
+      "category":"Lubricants & Fluids",
+      "sub_categories":[
+         "Anti Freeze",
+         "Grease",
+         "Other Fluids",
+         "Steering Fluid",
+         "Suspension Fluid"
+      ]
+   }
+]

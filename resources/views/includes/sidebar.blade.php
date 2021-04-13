@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="col-sm-2 sidebar">
     <ul class="sidebar-menu">
     <li><a href="/" class="navy"><i class="fa fa-tachometer"></i> Dashboard</a>
      </li>
@@ -15,8 +15,8 @@
       @can('View Category')
       <li><a href="/category"><i class="fa fa-tag"></i> Categories</a></li>
       @endcan
-      @can('View Sub Category')
-      <li><a href="/sub_category"><i class="fa fa-tag"></i> Sub Categories</a></li>
+      @can('View SubCategory')
+      <li><a href="/subCategory"><i class="fa fa-tag"></i> Sub Categories</a></li>
       @endcan
       </ul>
       </li>
@@ -75,7 +75,7 @@
       </li>
       @endcan
       @can('Create Rider')
-      <li><a href="/rider/create"><i class="fa fa-users"></i><i class="fa fa-plus"></i> Create rider</a></li>
+      <li><a href="/rider/create"><i class="fa fa-plus"></i> Create rider</a></li>
       @endcan
       </ul>
    	  </li>
