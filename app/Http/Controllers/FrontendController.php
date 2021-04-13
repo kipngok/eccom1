@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -63,8 +64,8 @@ class FrontendController extends Controller
     public function shop(){
     
         $products= Product::all();
-
-        return view('frontend.shoppage', compact('products'));
+        $categories=Category::all();
+        return view('frontend.shoppage', compact('products','categories'));
     }
 
     /**

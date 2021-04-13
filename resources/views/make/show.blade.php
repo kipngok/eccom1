@@ -9,16 +9,16 @@
 		<div class="row">
 		<div class="col-sm-6">
 		<table class="table table-condensed table-striped table-bordered">
-		<tbody>
-		<tr>
-		<th>Make</th>
-		<td>{{$make->name}}</td>
-		</tr>
-		<tr>
-		<th>Order</th>
-		<td>{{$make->order}}</td>
-		</tr>
-		</tbody>
+			<tbody>
+				<tr>
+					<th>Make</th>
+					<td>{{$make->name}}</td>
+				</tr>
+				<tr>
+					<th>Order</th>
+					<td>{{$make->order}}</td>
+				</tr>
+			</tbody>
 		</table>
 		<form action="/make/{{$make->id}}" method="POST">
 		@csrf

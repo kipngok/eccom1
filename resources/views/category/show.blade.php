@@ -9,20 +9,20 @@
         <div class="row">
         <div class="col-sm-6">
         <table class="table table-condensed table-striped table-bordered">
-        <tbody>
-        <tr>
-        <th>Category name</th>
-        <td>{{$category->name}}</td>
-        </tr>
-        <tr>
-        <th>Url</th>
-        <td>{{$category->slug}}</td>
-        </tr>
-        <tr>
-        <th>Order</th>
-        <td>{{$category->order}}</td>
-        </tr>
-        </tbody>
+            <tbody>
+                <tr>
+                    <th>Category name</th>
+                    <td>{{$category->name}}</td>
+                </tr>
+                <tr>
+                    <th>Url</th>
+                    <td>{{$category->slug}}</td>
+                </tr>
+                <tr>
+                    <th>Order</th>
+                    <td>{{$category->order}}</td>
+                </tr>
+            </tbody>
         </table>
         <form action="/category/{{$category->id}}" method="POST">
         @csrf

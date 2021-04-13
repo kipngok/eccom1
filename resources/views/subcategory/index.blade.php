@@ -5,7 +5,7 @@
 <div class="row">
 <div class="col-sm-10"><h4>Sub category</h4></div>
 <div class="col-sm-2">
-<a href="/sub_category/create" class="btn btn-sm btn-warning"><i class="fa fa-plus"></i> Add Category</a>
+<a href="/subCategory/create" class="btn btn-sm btn-warning"><i class="fa fa-plus"></i> Add Category</a>
     </div>
      </div>
     </div>
@@ -27,11 +27,12 @@
             <td>{{ ++$i }}</td>
             <td>{{$subCategory->name}}</td>
             <td>{{$subCategory->category->name}}</td>
-            <td><a href="/sub_category/{{$subCategory->id}}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i>view</a></td>
+            <td><a href="/subCategory/{{$subCategory->id}}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i>view</a></td>
         </tr>
         @endforeach
         </tbody>
         </table>
+        {{$subCategories->links()}}
  
     </div>
 </div>

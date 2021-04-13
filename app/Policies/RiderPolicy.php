@@ -57,7 +57,7 @@ class RiderPolicy
     public function update(User $user, Rider $rider)
     {
         //
-        return $user->can('Update Rider');
+        return $user->can('Edit Rider');
     }
 
     /**

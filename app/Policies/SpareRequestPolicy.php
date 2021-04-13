@@ -57,7 +57,7 @@ class SpareRequestPolicy
     public function update(User $user, SpareRequest $spareRequest)
     {
         //
-        return $user->can('Update SpareRequest');
+        return $user->can('Edit SpareRequest');
     }
 
     /**

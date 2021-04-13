@@ -56,7 +56,7 @@ class UserPolicy
     public function update(User $user, User $model)
     {
         //
-        return $user->can('Update User');
+        return $user->can('Edit User');
     }
 
     /**

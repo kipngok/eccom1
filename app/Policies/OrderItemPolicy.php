@@ -57,7 +57,7 @@ class OrderItemPolicy
     public function update(User $user, OrderItem $orderItem)
     {
         //
-         return $user->can('Update OrderItem');
+         return $user->can('Edit OrderItem');
     }
 
     /**

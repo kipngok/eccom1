@@ -12,25 +12,24 @@
         <div class="row">
 	<div class="col-sm-12">
 		<table class="table table-bordered">
-		<thead>
-	<!-- 'id','name','make_id'	 -->
-        <tr> 
-        <th>NO</th>  
-        <th>Name</th>
-        <th>Make</th>
-        <th>Action</th>
-        </tr>
-		</thead>
-		<tbody>
-        @foreach($models as $model) 
-        <tr>
-        <td>{{ ++$i }}</td>
-        <td>{{$model->name}}</td>
-        <td>{{$model->makes->name}}</td>
-        <td><a href="/model/{{$model->id}}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> view</a></td>
-        </tr>
-        @endforeach
-        </tbody>
+    		<thead>
+                <tr> 
+                    <th>#</th>  
+                    <th>Name</th>
+                    <th>Make</th>
+                    <th>Action</th>
+                </tr>
+    		</thead>
+    		<tbody>
+                @foreach($models as $model) 
+                <tr>
+                    <td>{{ ++$i }}</td>
+                    <td>{{$model->name}}</td>
+                    <td>{{$model->make->name}}</td>
+                    <td><a href="/model/{{$model->id}}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> view</a></td>
+                </tr>
+                @endforeach
+            </tbody>
 		</table>
 		{{$models->links()}}
 	</div>

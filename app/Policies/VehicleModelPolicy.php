@@ -19,7 +19,7 @@ class VehicleModelPolicy
     public function viewAny(User $user)
     {
         //
-        return $user->can('View VehicleModel');
+        return $user->can('View Model');
     }
 
     /**
@@ -32,7 +32,7 @@ class VehicleModelPolicy
     public function view(User $user, VehicleModel $vehicleModel)
     {
         //
-        return $user->can('View VehicleModel');
+        return $user->can('View Model');
     }
 
     /**
@@ -44,7 +44,7 @@ class VehicleModelPolicy
     public function create(User $user)
     {
         //
-        return $user->can('Create VehicleModel');
+        return $user->can('Create Model');
     }
 
     /**
@@ -57,7 +57,7 @@ class VehicleModelPolicy
     public function update(User $user, VehicleModel $vehicleModel)
     {
         //
-        return $user->can('Update VehicleModel');
+        return $user->can('Edit Model');
     }
 
     /**
@@ -70,7 +70,7 @@ class VehicleModelPolicy
     public function delete(User $user, VehicleModel $vehicleModel)
     {
         //
-        return $user->can('Delete VehicleModel');
+        return $user->can('Delete Model');
     }
 
     /**

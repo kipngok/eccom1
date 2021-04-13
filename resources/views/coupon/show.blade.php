@@ -9,24 +9,24 @@
 		<div class="row">
 		<div class="col-sm-6">
 		<table class="table table-condensed table-striped table-bordered">
-		<tbody>
-		<tr>
-		<th>Coupon code</th>
-		<td>{{$coupon->code}}</td>
-		</tr>
-		<tr>
-		<th>Type</th>
-		<td>{{$coupon->type}}</td>
-		</tr>
-		<tr>
-		<th>Value</th>
-		<td>{{$coupon->value}}</td>
-		</tr>
-		<tr>
-		<th>Expiry date</th>
-		<td>{{$coupon->expiry_date}}</td>
-		</tr>
-		</tbody>
+			<tbody>
+				<tr>
+					<th>Coupon code</th>
+					<td>{{$coupon->code}}</td>
+				</tr>
+				<tr>
+					<th>Type</th>
+					<td>{{$coupon->type}}</td>
+				</tr>
+				<tr>
+					<th>Value</th>
+					<td>{{$coupon->value}}</td>
+				</tr>
+				<tr>
+					<th>Expiry date</th>
+					<td>{{$coupon->expiry_date}}</td>
+				</tr>
+			</tbody>
 		</table>
 		<form action="/coupon/{{$coupon->id}}" method="POST">
 		@csrf

@@ -57,7 +57,7 @@ class BannerPolicy
     public function update(User $user, Banner $banner)
     {
         //
-         return $user->can('Update Banner');
+         return $user->can('Edit Banner');
     }
 
     /**

@@ -9,24 +9,24 @@
 		<div class="row">
 		<div class="col-sm-6">
 		<table class="table table-condensed table-striped table-bordered">
-		<tbody>
-		<tr>
-		<th>Make</th>
-		<td>{{$mechanic->name}}</td>
-		</tr>
-		<tr>
-		<th>Location</th>
-		<td>{{$mechanic->location}}</td>
-		</tr>
-		<tr>
-		<th>Approved</th>
-		<td>{{$mechanic->approved}}</td>
-		</tr>
-		<tr>
-		<th>Status</th>
-		<td>{{$mechanic->status}}</td>
-		</tr>
-		</tbody>
+			<tbody>
+				<tr>
+					<th>Make</th>
+					<td>{{$mechanic->name}}</td>
+				</tr>
+				<tr>
+					<th>Location</th>
+					<td>{{$mechanic->location}}</td>
+				</tr>
+				<tr>
+					<th>Approved</th>
+					<td>{{$mechanic->approved}}</td>
+				</tr>
+				<tr>
+					<th>Status</th>
+					<td>{{$mechanic->status}}</td>
+				</tr>
+			</tbody>
 		</table>
 		<form action="/mechanic/{{$mechanic->id}}" method="POST">
 		@csrf

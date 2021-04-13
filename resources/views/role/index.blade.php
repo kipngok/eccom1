@@ -14,7 +14,7 @@
 		<table class="table table-bordered">
 		<thead>
 		<tr> 
-		<th>NO</th> 
+		<th>#</th> 
 		<th>Role name</th>
 		<th>Action</th>
         </tr>

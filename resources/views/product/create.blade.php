@@ -13,72 +13,67 @@
 		 @csrf
 		<div class="form-group">
 		<label>Product name</label>
-		<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+		<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" id="name">
 		@error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
-		<div class="row">
-		<div class="col-sm-6">
-		<div class="form-group">
+		<div class="form-row">
+		<div class="form-group col">
 		<label>Category</label>
-		<select class="form-select @error('category_id') is-invalid @enderror" name="category_id">
-        @foreach($category as $category)
+		<select class="form-select @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
+        @foreach($categories as $category)
         <option value="{{$category->id}}">{{$category->name}}</option>
         @endforeach
         </select>
         @error('category_id')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
-		</div>	
-		<div class="col-sm-6">
-		<div class="form-group">
+		<div class="form-group col">
 		<label>Sub category</label>
-		<select class="form-select @error('sub_category_id') is-invalid @enderror" name="sub_category_id">
-        @foreach($subCategory as $subCategory)
+		<div  id="subCategories">
+		<select class="form-select @error('sub_category_id') is-invalid @enderror" name="sub_category_id" id="sub_category_id">
+        @foreach($subCategories as $subCategory)
         <option value="{{$subCategory->id}}">{{$subCategory->name}}</option>
         @endforeach
          </select>
+     	</div>
          @error('sub_category_id')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
-		</div>
 		</div>	
 		</div>
-		<div class="row">
+		<div class="form-row">
 		<div class="col-sm-4">
 		<div class="form-group">
 		<label>Price</label>
-		<input type="text" name="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}">
+		<input type="number" name="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}">
 		@error('price')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		</div>	
 		<div class="col-sm-4">
 		<div class="form-group">
 		<label>Sale price</label>
-		<input type="text" name="sale_price" class="form-control @error('sale_price') is-invalid @enderror" value="{{ old('sale_price') }}">
+		<input type="number" name="sale_price" class="form-control @error('sale_price') is-invalid @enderror" value="{{ old('sale_price') }}">
 		@error('sale_price')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		</div>
 		<div class="col-sm-4">
 		<div class="form-group">
 		<label>Quantity</label>
-		<input type="text" name="quantity" class="form-control @error('quantity') is-invalid @enderror" value="{{ old('quantity') }}">
+		<input type="number" name="quantity" class="form-control @error('quantity') is-invalid @enderror" value="{{ old('quantity') }}">
 		@error('quantity')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		</div>	
 		</div>
-		<div class="form-group">
-		<label>Slug</label>
-		<input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror" value="{{ old('slug') }}">
-		@error('slug')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
-		</div>
+
 		<div class="form-group">
 		<label>Product description</label>
-		<textarea name="description" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}"></textarea>
+		<textarea name="description" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}" rows="10" id="description"></textarea>
 		@error('description')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
-		<div class="form-group">
-		<label>Featured</label>
-		<input type="text" name="featured" class="form-control @error('featured') is-invalid @enderror" value="{{ old('featured') }}">
-		@error('featured')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
+		<div class="form-check">
+  			<input class="form-check-input" type="checkbox" value="1" name="featured" id="featured">
+		  	<label class="form-check-label" for="featured">
+		    	Is Featured?
+		 	</label>
 		</div>
-		<div class="row">
+		<div class="form-row">
 		<div class="col-sm-6">
 		<div class="form-group">
 		<label>Image</label>
@@ -95,7 +90,7 @@
 		</div>
 		</div>
 		</div>	
-		<div class="row">
+		<div class="form-row">
 		<div class="col-sm-6">
 		<div class="form-group">
 		<label>Image</label>
@@ -111,52 +106,73 @@
 		</div>
 		</div>
 		</div>
-		<div class="row">
-		<div class="col-sm-4">
-		<div class="form-group">
+		<div class="form-row">
+		<div class="form-group col-sm-6">
 		<label>Make</label>
-		<select class="form-select @error('make_id') is-invalid @enderror" name="make_id">
-        @foreach($make as $make)
+		<select class="form-select @error('make_id') is-invalid @enderror" name="make_id" id="make_id">
+        @foreach($makes as $make)
         <option value="{{$make->id}}">{{$make->name}}</option>
         @endforeach
          </select>
          @error('make_id')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
-		</div>
-		<div class="col-sm-4">
-		<div class="form-group">
+		<div class="form-group col-sm-6">
 		<label>Model</label>
-		<select class="form-select @error('model_id') is-invalid @enderror" name="model_id">
-        @foreach($model as $model)
+		<div id="models">
+		<select class="form-select @error('model_id') is-invalid @enderror" name="model_id" id="model_id">
+        @foreach($models as $model)
         <option value="{{$model->id}}">{{$model->name}}</option>
         @endforeach
          </select>
+     	</div>
          @error('model_id')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		</div>
-		<div class="col-sm-4">
-		<div class="form-group">
+
+		<div class="form-row">
+		<div class="form-group col-sm-4">
 		<label>Year</label>
 		<input type="text" name="year" class="form-control @error('year') is-invalid @enderror" value="{{ old('year') }}">
 		@error('year')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
-		</div>	
-		</div>
-		<div class="form-group">
+
+		<div class="form-group col-sm-4">
 		<label>Engine</label>
 		<input type="text" name="engine" class="form-control @error('engine') is-invalid @enderror" value="{{ old('engine') }}">
 		@error('engine')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
-		<div class="form-group">
+		<div class="form-group col-sm-4">
 		<label>Fuel</label>
-		<input type="text" name="fuel" class="form-control @error('fuel') is-invalid @enderror" value="{{ old('fuel') }}">
+		<select name="fuel" class="form-select @error('fuel') is-invalid @enderror">
+			<option>Petrol</option>
+			<option>Diesel</option>
+			<option>Electric</option>
+		</select>
 		@error('fuel')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
+		</div>
+
 		<div class="form-group">
 		<label>Status</label>
-		<input type="text" name="status" class="form-control @error('status') is-invalid @enderror" value="{{ old('status') }}">
+		<select name="status" class="form-select @error('status') is-invalid @enderror">
+			<option>Active</option>
+			<option>In Active</option>
+		</select>
 		@error('status')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
+
+		<div class="form-group">
+		<label>Slug</label>
+		<input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror" value="{{ old('slug') }}" id="slug">
+		@error('slug')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
+		</div>
+
+		<div class="form-group">
+		<label>Meta Description</label>
+		<textarea type="text" name="meta" class="form-control @error('meta') is-invalid @enderror" id="meta">{{old('meta')}}</textarea>
+		@error('meta')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
+		</div>
+
 		<div class="form-group">
 		<button type="submit" class="btn btn-sm btn-success">Save Product</button>
 		<a href="/product" class="btn btn-sm btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back</a>
@@ -167,7 +183,64 @@
 </div>
 
 @endsection
+
+
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.min.js" defer></script>
-@endsection
 
+<script type="text/javascript">
+	var rootPath='';
+
+  function showModels(){
+
+    var make_id = $('#make_id').find(":selected").val();
+
+        $.ajax({
+                url: rootPath + '/vehicleModel/get/'+make_id,
+                type: "GET", 
+                success: function(data){
+                    $data = $(data); 
+                    $('#models').fadeOut().replaceWith($data).fadeIn();    
+                }
+            });
+    }
+   function showSubCategories(){
+
+    var category_id = $('#category_id').find(":selected").val();
+
+        $.ajax({
+                url: rootPath + '/subCategory/get/'+category_id,
+                type: "GET", 
+                success: function(data){
+                    $data = $(data); 
+                    $('#subCategories').fadeOut().replaceWith($data).fadeIn();    
+                }
+            });
+    }
+
+function create_slug(){
+	var str = $('#name').val().toLowerCase();
+	var res = str.split(" ");
+	var slug=res.join("-");
+	$('#slug').val(slug);
+}
+
+$('#name').change(function(){
+        create_slug();
+        });
+
+$('#description').change(function(){
+        var description=$('#description').val().substring(0, 150);
+		$('#meta').val(description);
+        });
+
+$('#make_id').change(function(){
+        showModels();
+        });
+
+$('#category_id').change(function(){
+        showSubCategories();
+        });
+</script>
+
+@endsection

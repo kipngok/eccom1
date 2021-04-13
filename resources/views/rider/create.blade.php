@@ -8,21 +8,12 @@
 <div class="container">
 <div class="row">
 	<div class="col-sm-6">
-		 @if ($errors->any())
-    <div class="alert alert-danger mb-2">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
 		<form action="/rider" method="POST">
 			@csrf
 				<div class="form-group">
 			<label>Rider</label>
 			<select class="form-select @error('user_id') is-invalid @enderror" name="user_id">
-        	@foreach($user as $user)
+        	@foreach($users as $user)
         	<option value="{{$user->id}}">{{$user->name}}</option>
         	@endforeach
         	</select>

@@ -16,8 +16,8 @@ class SubCategoryController extends Controller
     public function index()
     {   
         $this->authorize('viewAny', SubCategory::class);
-        $subcategories = SubCategory::orderBy('created_at','desc')->paginate(20);
-        return view('subCategory.index',compact('subcategories'))
+        $subCategories = SubCategory::orderBy('created_at','desc')->paginate(20);
+        return view('subCategory.index',compact('subCategories'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
         
     }
@@ -32,6 +32,11 @@ class SubCategoryController extends Controller
         $this->authorize('create', SubCategory::class);
         $categories = Category::all();
         return view('subCategory.create', compact('categories'));
+    }
+
+    public function subCategories($id){
+        $subCategories=SubCategory::where('category_id','=',$id)->get();
+        return view('subCategory.get',compact('subCategories'));
     }
 
     /**

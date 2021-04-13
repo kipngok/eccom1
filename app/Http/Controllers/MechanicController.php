@@ -18,7 +18,7 @@ class MechanicController extends Controller
     {   
         $this->authorize('viewAny', Mechanic::class);
         $mechanics = Mechanic::orderBy('created_at','desc')->paginate(20);
-        return view('mechanic.index',compact('mechanics','make','users'))
+        return view('mechanic.index',compact('mechanics'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
 
         
