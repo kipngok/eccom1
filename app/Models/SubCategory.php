@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class subCategory extends Model
 {
     use HasFactory;
-    protected $fillable = ['id', 'name', 'category_id'];
+    protected $fillable = ['id', 'name', 'category_id','slug'];
     
   	public function category(){
    		return $this->hasOne('App\Models\Category', 'id', 'category_id')->withDefault(['name'=>'Deleted']);

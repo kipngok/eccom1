@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Auth;
 
 class OrderPolicy
 {
@@ -31,7 +32,15 @@ class OrderPolicy
     public function view(User $user, Order $order)
     {
         //
-         return $user->can('View Order');
+        if(isset(Auth::user()->is_admin)){
+            return $user->can('View Order');
+        }
+        elseif($order->user_id == Auth::user()->id){
+            return $user->can('View Order');
+        }
+        else{
+            return false;
+        }
     }
 
     /**

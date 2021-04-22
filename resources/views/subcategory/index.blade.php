@@ -18,6 +18,7 @@
             <th>#</th>  
             <th>Category name</th>
             <th>Category</th>
+            <th>Slug</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -26,7 +27,8 @@
         <tr>
             <td>{{ ++$i }}</td>
             <td>{{$subCategory->name}}</td>
-            <td>{{$subCategory->category->name}}</td>
+            <td>{{$subCategory->category->name ?? ''}}</td>
+            <td>{{$subCategory->slug}}</td>
             <td><a href="/subCategory/{{$subCategory->id}}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i>view</a></td>
         </tr>
         @endforeach

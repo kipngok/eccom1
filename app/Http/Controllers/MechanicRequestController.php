@@ -45,7 +45,7 @@ class MechanicRequestController extends Controller
     public function store(Request $request)
      {
         $this->authorize('create', MechanicRequest::class);
-        $this->validate($request(),[
+        $this->validate(request(),[
         'mechanic_id'=>'required',
         'notes'=>'required',
         'make_id'=>'required',
@@ -95,7 +95,7 @@ class MechanicRequestController extends Controller
     public function update(Request $request, MechanicRequest $mechanicRequest)
     {
         $this->authorize('update', $mechanicRequest);
-        $this->validate($request(),[
+        $this->validate(request(),[
         'mechanic_id'=>'required',
         'notes'=>'required',
         'make_id'=>'required',

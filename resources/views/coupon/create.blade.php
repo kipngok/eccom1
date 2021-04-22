@@ -26,7 +26,10 @@
 		</div>
 		<div class="form-group">
 		<label>Type</label>
-		<input type="text" name="type" class="form-control  @error('type') is-invalid @enderror"> value="{{ old('type') }}"
+		<select  name="type" class="form-select  @error('type') is-invalid @enderror">
+			<option>Percentage</option>
+			<option>Amount</option>
+		</select>
 		@error('type')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
 		<div class="form-group">

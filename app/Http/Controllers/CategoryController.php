@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Models\Sub_category;
+use App\Models\SubCategory;
+use Cocur\Slugify\Slugify;
 
 class CategoryController extends Controller
 {
@@ -31,6 +32,27 @@ class CategoryController extends Controller
     {
         $this->authorize('Create', Category::class);
         return view('category.create');
+    }
+
+
+    public function refreshSlug()
+    {
+        $categories=Category::all();
+        $subCategories=subCategory::all();
+        $slugify = new Slugify();
+        foreach($categories as $category){
+            $categoryD=array();
+            $categoryD['slug']=$slugify->slugify($category->name);
+            $category->update($categoryD);
+        }
+
+        foreach($subCategories as $subCategory){
+            $subCategoryD=array();
+            $subCategoryD['slug']=$slugify->slugify($subCategory->name);
+            $subCategory->update($subCategoryD);
+        }
+
+        return redirect('/category');
     }
 
     /**
@@ -87,7 +109,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $this->authorize('update', $category);
-         $this->validate($request(), [
+         $this->validate(request(), [
         'name'=>'required',
         'slug'=>'required',
         'order'=>'required'

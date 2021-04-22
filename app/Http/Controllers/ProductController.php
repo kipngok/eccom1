@@ -79,12 +79,16 @@ class ProductController extends Controller
     public function store(Request $request)
      {
         $this->authorize('create', Product::class);
+        $this->validate(request(), [
+        'slug'=>'required|unique:products'
+        ]);
+        
         $input = $request->all();
         $product = Product::create($input);
-        $product->addMediaFromRequest('image1')->toMediaCollection('products');
-        $product->addMediaFromRequest('image2')->toMediaCollection('products');
-        $product->addMediaFromRequest('image3')->toMediaCollection('products');
-        $product->addMediaFromRequest('image4')->toMediaCollection('products');
+        if(isset($input['image1'])){$product->addMediaFromRequest('image1')->toMediaCollection('products');}
+        if(isset($input['image2'])){$product->addMediaFromRequest('image2')->toMediaCollection('products');}
+        if(isset($input['image3'])){$product->addMediaFromRequest('image3')->toMediaCollection('products');}
+        if(isset($input['image4'])){$product->addMediaFromRequest('image4')->toMediaCollection('products');}
         return redirect('/product/'.$product->id);
     }
     /**
@@ -97,7 +101,8 @@ class ProductController extends Controller
     {
         //
         $this->authorize('view', $product);
-        return view('product.show',compact('product'));
+        $reviews=$product->reviews()->orderBy('created_at','desc')->paginate(5);
+        return view('product.show',compact('product','reviews'));
     }
 
     /**
@@ -128,11 +133,22 @@ class ProductController extends Controller
         $this->authorize('update', $product);
         $input = $request->all();
         $product->update($input);
-        $product->addMediaFromRequest('image1')->toMediaCollection('products');
-        $product->addMediaFromRequest('image2')->toMediaCollection('products');
-        $product->addMediaFromRequest('image3')->toMediaCollection('products');
-        $product->addMediaFromRequest('image4')->toMediaCollection('products');
-        return redirect('/product/'.$products->id);
+        $mediaItems = $product->getMedia();
+        
+        if(isset($input['image1'])){
+            if(isset($mediaItems[0])){$mediaItems[0]->delete();}
+            $product->addMediaFromRequest('image1')->toMediaCollection('products');}
+        if(isset($input['image2'])){
+            if(isset($mediaItems[1])){$mediaItems[1]->delete();}
+            $product->addMediaFromRequest('image2')->toMediaCollection('products');}
+        if(isset($input['image3'])){
+            if(isset($mediaItems[2])){$mediaItems[2]->delete();}
+            $product->addMediaFromRequest('image3')->toMediaCollection('products');}
+        if(isset($input['image4'])){
+            if(isset($mediaItems[3])){$mediaItems[3]->delete();}
+            $product->addMediaFromRequest('image4')->toMediaCollection('products');}
+
+        return redirect('/product/'.$product->id);
     }
 
     /**

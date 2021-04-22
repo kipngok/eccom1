@@ -16,7 +16,7 @@
 		<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" id="name">
 		@error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
-		<div class="form-row">
+		<div class="row g-2">
 		<div class="form-group col">
 		<label>Category</label>
 		<select class="form-select @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
@@ -38,7 +38,7 @@
          @error('sub_category_id')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>	
 		</div>
-		<div class="form-row">
+		<div class="row g-2">
 		<div class="col-sm-4">
 		<div class="form-group">
 		<label>Price</label>
@@ -73,7 +73,8 @@
 		    	Is Featured?
 		 	</label>
 		</div>
-		<div class="form-row">
+
+		<div class="row g-2">
 		<div class="col-sm-6">
 		<div class="form-group">
 		<label>Image</label>
@@ -90,7 +91,7 @@
 		</div>
 		</div>
 		</div>	
-		<div class="form-row">
+		<div class="row g-2">
 		<div class="col-sm-6">
 		<div class="form-group">
 		<label>Image</label>
@@ -106,10 +107,11 @@
 		</div>
 		</div>
 		</div>
-		<div class="form-row">
+		<div class="row g-2">
 		<div class="form-group col-sm-6">
 		<label>Make</label>
 		<select class="form-select @error('make_id') is-invalid @enderror" name="make_id" id="make_id">
+			<option value="">Select make</option>
         @foreach($makes as $make)
         <option value="{{$make->id}}">{{$make->name}}</option>
         @endforeach
@@ -120,6 +122,7 @@
 		<label>Model</label>
 		<div id="models">
 		<select class="form-select @error('model_id') is-invalid @enderror" name="model_id" id="model_id">
+		<option value="">Select model</option>
         @foreach($models as $model)
         <option value="{{$model->id}}">{{$model->name}}</option>
         @endforeach
@@ -129,7 +132,7 @@
 		</div>
 		</div>
 
-		<div class="form-row">
+		<div class="row g-2">
 		<div class="form-group col-sm-4">
 		<label>Year</label>
 		<input type="text" name="year" class="form-control @error('year') is-invalid @enderror" value="{{ old('year') }}">
@@ -189,34 +192,6 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.min.js" defer></script>
 
 <script type="text/javascript">
-	var rootPath='';
-
-  function showModels(){
-
-    var make_id = $('#make_id').find(":selected").val();
-
-        $.ajax({
-                url: rootPath + '/vehicleModel/get/'+make_id,
-                type: "GET", 
-                success: function(data){
-                    $data = $(data); 
-                    $('#models').fadeOut().replaceWith($data).fadeIn();    
-                }
-            });
-    }
-   function showSubCategories(){
-
-    var category_id = $('#category_id').find(":selected").val();
-
-        $.ajax({
-                url: rootPath + '/subCategory/get/'+category_id,
-                type: "GET", 
-                success: function(data){
-                    $data = $(data); 
-                    $('#subCategories').fadeOut().replaceWith($data).fadeIn();    
-                }
-            });
-    }
 
 function create_slug(){
 	var str = $('#name').val().toLowerCase();
@@ -232,14 +207,6 @@ $('#name').change(function(){
 $('#description').change(function(){
         var description=$('#description').val().substring(0, 150);
 		$('#meta').val(description);
-        });
-
-$('#make_id').change(function(){
-        showModels();
-        });
-
-$('#category_id').change(function(){
-        showSubCategories();
         });
 </script>
 

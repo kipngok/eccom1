@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->integer('role_id')->nullable();
             $table->integer('is_admin')->nullable();
             $table->string('avatar')->nullable();
+            $table->string('affiliateCode')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

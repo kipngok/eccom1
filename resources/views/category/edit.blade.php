@@ -13,12 +13,12 @@
         <input type="hidden" name="_method" value="PUT">
         <div class="form-group">
         <label>Category name</label>
-        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{$category->name}}">
+        <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{$category->name}}">
         @error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
         </div>
         <div class="form-group">
         <label>Slug</label>
-        <input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror" value="{{$category->slug}}">
+        <input type="text" name="slug" id="slug" class="form-control @error('slug') is-invalid @enderror" value="{{$category->slug}}">
         @error('slug')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
         </div>
         <div class="form-group">
@@ -34,4 +34,19 @@
     </div>
 </div>
 
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+function create_slug(){
+    var str = $('#name').val().toLowerCase();
+    var res = str.split(" ");
+    var slug=res.join("-");
+    $('#slug').val(slug);
+}
+
+$('#name').change(function(){
+        create_slug();
+        });
+</script>
 @endsection
