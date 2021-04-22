@@ -15,7 +15,7 @@ class SpareRequestController extends Controller
     public function index()
     {   
         $this->authorize('viewAny', SpareRequest::class);
-        $sparerRquests = SpareRequest::orderBy('created_at','desc')->paginate(20);
+        $spareRequests = SpareRequest::orderBy('created_at','desc')->paginate(20);
         return view('spareRequest.index',compact('spareRequests'))->with('i', (request()->input('page', 1) - 1) * 5);  
     }
 
@@ -39,7 +39,7 @@ class SpareRequestController extends Controller
     public function store(Request $request)
      {
         $this->authorize('create', SpareRequest::class);
-        $this->validate($request(),[
+        $this->validate(request(),[
         'photo'=>'required',
         'email'=>'required',
         'notes'=>'required',
@@ -89,16 +89,6 @@ class SpareRequestController extends Controller
     public function update(Request $request, SpareRequest $spareRequest)
     { 
         $this->authorize('update', $spareRequest);
-        $this->validate($request(),[
-        'photo'=>'required',
-        'email'=>'required',
-        'notes'=>'required',
-        'make_id'=>'required',
-        'model_id'=>'required',
-        'status'=>'required',
-        'sub_category_id'=>'required',
-         'category_id'=>'required'
-        ]);
         $input = $request->all();
         $spareRequest->update($input);
         return redirect('/spareRequest/'.$spareRequest->id);

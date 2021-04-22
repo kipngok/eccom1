@@ -14,6 +14,29 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    
+    'africastalking_username' => env('AFRICASTALKING_USERNAME'),
+    'africastalking_apiKey' => env('AFRICASTALKING_APIKEY'),
+    'africastalking_from' => env('AFRICASTALKING_FROM'),
+    'sms_enabled'=> env('SMS_ENABLED'),
+    'sms_shortcode_enabled'=> env('SMS_SHORTCODE_ENABLED'),
+    'sms_shortcode'=> env('SMS_SHORTCODE'),
+
+
+    'advanta_url' => env('ADVANTA_URL'),
+    'advanta_apikey' => env('ADVANTA_APIKEY'),
+    'advanta_shortcode' => env('ADVANTA_SHORTCODE'),
+    'advanta_partnerid' => env('ADVANTA_PARTNERID'),
+
+    'ipay_vendor_id' => env('IPAY_VENDOR_ID'),
+    'ipay_currency' => env('IPAY_CURRENCY'),
+    'ipay_hash_key' => env('IPAY_HASH_KEY'),
+
+    'mpesa_consumer_key' => env('MPESA_CONSUMER_KEY'),
+    'mpesa_consumer_secret' => env('MPESA_CONSUMER_SECRET'),
+    'mpesa_passkey' => env('MPESA_PASSKEY'),
+    'mpesa_shortcode' => env('MPESA_SHORTCODE'),
+    'mpesa_env' => env('MPESA_ENV'),
 
     /*
     |--------------------------------------------------------------------------

@@ -13,25 +13,48 @@
         <input type="hidden" name="_method" value="PUT">
          <div class="form-group">
    	 	<label>Name</label>
-    	<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{$$subCategory->name}}">
+    	<input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{$subCategory->name}}">
         @error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
     	</div>
    		<div class="form-group">
 		<label>Category</label>
 		<select class="form-select @error('category_id') is-invalid @enderror" name="category_id">
     	 @foreach($categories as $category)
-     	<option value="{{$category->id}}">{{$category->name}}</option>
+         @if($category->id == $subCategory->category_id)
+         <option value="{{$category->id}}" selected="selected">{{$category->name}}</option>
+         @else
+         <option value="{{$category->id}}">{{$category->name}}</option>
+         @endif
      	@endforeach
      	 </select>
          @error('category_id')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 		</div>
         <div class="form-group">
-        <button type="submit" class="btn btn-sm btn-success">Update
-        </button>
+        <label>Slug</label>
+        <input type="text" name="slug" id="slug" class="form-control @error('slug') is-invalid @enderror" value="{{$subCategory->slug}}">
+        @error('slug')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
+        </div>
+        <div class="form-group">
+        <button type="submit" class="btn btn-sm btn-success mt-2">Update</button>
         </div>
         </form>
         </div>
     </div>
 </div>
+@endsection
 
+
+@section('scripts')
+<script type="text/javascript">
+function create_slug(){
+    var str = $('#name').val().toLowerCase();
+    var res = str.split(" ");
+    var slug=res.join("-");
+    $('#slug').val(slug);
+}
+
+$('#name').change(function(){
+        create_slug();
+        });
+</script>
 @endsection

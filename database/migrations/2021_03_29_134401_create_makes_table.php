@@ -17,6 +17,7 @@ class CreateMakesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('order')->nullable()->default(0);
+            $table->integer('is_featured')->nullable();
             $table->timestamps();
         });
     }

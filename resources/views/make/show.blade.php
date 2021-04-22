@@ -18,6 +18,10 @@
 					<th>Order</th>
 					<td>{{$make->order}}</td>
 				</tr>
+				<tr>
+					<th>Is featured</th>
+					<td>@if($make->is_featured == 1) <i class="fa fa-check"></i> @else <i class="fa fa-times"></i> @endif</td>
+				</tr>
 			</tbody>
 		</table>
 		<form action="/make/{{$make->id}}" method="POST">

@@ -89,7 +89,7 @@ class RiderController extends Controller
     public function update(Request $request, Rider $rider)
     { 
         $this->authorize('update', $rider);
-        $this->validate($request(),[
+        $this->validate(request(),[
         'user_id'=>'required',
         'reg_no'=>'required',
         'type'=>'required',

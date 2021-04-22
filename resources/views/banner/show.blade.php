@@ -23,6 +23,18 @@
                 <th>Location</th>
                 <td>{{$banner->location}}</td>
             </tr>
+            <tr>
+                <th>Heading</th>
+                <td>{{$banner->heading}}</td>
+            </tr>
+            <tr>
+                <th>Sub Heading</th>
+                <td>{{$banner->subHeading}}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{$banner->content}}</td>
+            </tr>
         </tbody>
     </table>
     <form action="/banner/{{$banner->id}}" method="POST">
@@ -36,11 +48,7 @@
     </form>
     </div>
     <div class="col-sm-6">
-    <table>
-        <tr>
-            <td><img src="{{ asset('public/images/'.$banner->image) }}" alt="image" height="230px"; width="230px"; /></td>
-        </tr>
-    </table>
+   <img src="{{ $banner->getMedia('banners')->first()->getUrl() }}" alt="image" width="100%"; />
     </div>
     </div>
     </div>

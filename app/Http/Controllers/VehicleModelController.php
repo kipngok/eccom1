@@ -93,7 +93,7 @@ class VehicleModelController extends Controller
     public function update(Request $request, VehicleModel $model)
     {
         $this->authorize('update', $model);
-         $this->validate($request(),[
+         $this->validate(request(),[
         'name'=>'required',
         'make_id'=>'required'
         ]);

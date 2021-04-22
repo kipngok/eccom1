@@ -26,10 +26,40 @@
         @error('url')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
         </div>
         <div class="form-group">
+            <label>Heading</label>
+            <input type="text" name="heading" class="form-control @error('heading') is-invalid @enderror" value="{{old('heading')}}">
+            @error('heading')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
+        </div>
+        <div class="form-group">
+            <label>Sub Heading</label>
+            <input type="text" name="subHeading" class="form-control @error('subHeading') is-invalid @enderror" value="{{old('subHeading')}}">
+            @error('subHeading')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
+        </div>
+        <div class="form-group">
+            <label>Content</label>
+            <textarea name="content" rows="5" class="form-control @error('content') is-invalid @enderror"></textarea>  
+            @error('content')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
+        </div>
+        <div class="form-group">
         <label>Location</label>
-        <input type="text" name="location" class="form-control @error('location') is-invalid @enderror" value="{{ old('location') }}">
+        <select name="location" class="form-select @error('location') is-invalid @enderror">
+            <option>Slider</option>
+            <option>Thumbnail Banner</option>
+            <option>Side Menu Banner</option>
+            <option>Stretch Banner</option>
+        </select>
         @error('location')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
         </div>
+
+        <div class="form-group">
+        <label>Status</label>
+        <select name="status" class="form-select @error('status') is-invalid @enderror">
+            <option>Active</option>
+            <option>Inactive</option>
+        </select>
+        @error('status')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
+        </div>
+
         <div class="form-group">
         <button type="submit" class="btn btn-sm btn-success">Save</button>
         <a href="/banner" class="btn btn-sm btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back</a>

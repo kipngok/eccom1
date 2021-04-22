@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -53,6 +54,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['required', 'numeric', 'digits_between:10,13'],
         ]);
     }
 
@@ -64,10 +66,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+         $role=Role::where('name','=','User')->first();
+         $nameArray=explode(' ', $data['name']);
+         $affiliateCode=strtoupper(substr($nameArray[0], 0,3)).rand(0,10000);
+         $user=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
+            'role' => $role->id,
+            'affiliateCode'=>$affiliateCode,
             'password' => Hash::make($data['password']),
-        ]);
+
+         ]);
+
+         $user->assignRole('User');
+         return $user;
     }
 }

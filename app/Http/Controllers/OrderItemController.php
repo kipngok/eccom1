@@ -41,7 +41,7 @@ class OrderItemController extends Controller
     public function store(Request $request)
      {
         $this->authorize('create', OrderItem::class);
-        $this->validate($request(),[
+        $this->validate(request(),[
         'product_id'=>'required',
         'orderItem_id'=>'required',
         'qty'=>'required',
@@ -88,7 +88,7 @@ class OrderItemController extends Controller
     public function update(Request $request, Orderitem $orderItem)
     { 
         $this->authorize('update', $orderItem);
-        $this->validate($request(),[
+        $this->validate(request(),[
         'product_id'=>'required',
         'orderItem_id'=>'required',
         'qty'=>'required',

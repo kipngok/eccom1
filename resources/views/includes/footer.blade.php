@@ -10,18 +10,17 @@
 <div class="col-sm-3">
    <h4>IMPORTANT LINKS</h4>
    <ul style="list-style: none;">
-   	<li><a href="/">Contact us</a></li>
-   	<li><a href="/">Help center</a></li>
-   	<li><a href="/">How to shop on Suki</a></li>
-   	<li><a href="/">Shipping and delivery</a></li>
-   	<li><a href="/">Return Policy</a></li>
-   	<li><a href="/">Terms And Conditions</a></li>
+      <li><a href="/contact">About us</a></li>
+   	<li><a href="/contact">Contact us</a></li>
+   	<li><a href="/help">Help center</a></li>
+   	<li><a href="/return">Return Policy</a></li>
+   	<li><a href="/terms">Terms And Conditions</a></li>
    </ul>
 </div>
 <div class="col-sm-3">
    <h4>MAKE MONEY WITH SUKI</h4>
    <ul style="list-style: none;">
-   	<li><a href="/">Become an Affiliate Partner</a></li>
+   	<li><a href="/affiliate">Become an Affiliate Partner</a></li>
    	<li><a href="/">Become a Logistics Service Partner</a></li>
    </ul>
 </div>

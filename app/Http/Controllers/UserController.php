@@ -49,6 +49,8 @@ class UserController extends Controller
         $this->authorize('create', User::class);
         $input=$request->all();
         $input['password']=Hash::make($input['password']);
+        $nameArray=explode(' ', $input['name']);
+        $input['affiliateCode']=strtoupper(substr($nameArray[0], 0,3)).rand(0,10000);
         $user=User::create($input);
         $user->syncPermissions($request->input('permissions'));
         return redirect('/user/'.$user->id);

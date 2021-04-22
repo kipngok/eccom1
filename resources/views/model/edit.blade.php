@@ -1,13 +1,10 @@
 @extends('layouts.app')
 @section('content')
-@extends('layouts.app')
-@section('content')
 	<div class="page-header">
 	<div class="row">
 	<div class="col-sm-10"><h4><i class="fa fa-plus"></i> Edit model</h4></div>
     </div>
     </div>
-    <!-- 'id','name','make_id'	 -->
 <div class="container">
 	<div class="row">
 		<div class="col-sm-6">
@@ -36,8 +33,5 @@
 		</div>
 	</div>
 </div>
-
-@endsection
-
 
 @endsection

@@ -12,7 +12,7 @@
     @csrf
     <div class="form-group">
     <label>Sub category name</label>
-    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
     @error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
     </div>
    <div class="form-group">
@@ -25,6 +25,11 @@
     @error('category_id')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
 	</div>
     <div class="form-group">
+    <label>Slug</label>
+    <input type="text" name="slug" id="slug" class="form-control @error('slug') is-invalid @enderror" value="{{ old('slug') }}">
+    @error('slug')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span> @enderror
+    </div>
+    <div class="form-group">
     <button type="submit" class="btn btn-sm btn-success">Save</button>
     <a href="/subCategory" class="btn btn-sm btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back</a>
     </div>
@@ -32,4 +37,20 @@
   </div>
 </div>
 </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+function create_slug(){
+    var str = $('#name').val().toLowerCase();
+    var res = str.split(" ");
+    var slug=res.join("-");
+    $('#slug').val(slug);
+}
+
+$('#name').change(function(){
+        create_slug();
+        });
+</script>
+
 @endsection

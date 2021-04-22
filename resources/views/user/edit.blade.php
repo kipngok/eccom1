@@ -45,7 +45,11 @@
 			</div>
 			<div class="form-check form-check-inline">
 			<input type="hidden" name="is_admin" value="0">
-  			<input class="form-check-input" type="checkbox" value="1" name="is_admin">
+			@if($user->is_admin == 1)
+			<input class="form-check-input" type="checkbox" value="1" name="is_admin" checked="checked">
+			@else
+			<input class="form-check-input" type="checkbox" value="1" name="is_admin">
+			@endif
   			<label class="form-check-label">is admin</label>
 			</div>
 			<div id="permissions">

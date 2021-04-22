@@ -15,14 +15,17 @@ class CreateSpareRequestsTable extends Migration
     {
         Schema::create('spare_requests', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('photo');
-            $table->string('email');
+            $table->string('name')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('email')->nullable();
             $table->string('notes');
-            $table->integer('make_id');
-            $table->integer('model_id');
+            $table->integer('make_id')->nullable();
+            $table->integer('model_id')->nullable();
             $table->string('status');
-            $table->integer('sub_category_id');
-            $table->integer('category_id');
+            $table->integer('user_id')->nullable()
+            $table->string('phone')->nullable()
+            $table->integer('sub_category_id')->nullable();
+            $table->integer('category_id')->nullable();
             $table->timestamps();
         });
     }
