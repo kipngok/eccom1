@@ -2,9 +2,9 @@
 @section('content')
 <div class="container">
 <div class="row">
-  <div class="col-sm-3"><x-categories-menu :categories="$categories" class="card mt-3 shadow-sm"></x-categories-menu>
+  <div class="col-sm-3"><x-categories-menu :categories="$categories" class="card mt-3 shadow-sm no-mobile"></x-categories-menu>
   @if(isset($sideBanner))
-    <img src="{{ $sideBanner->getMedia('banners')->first()->getUrl() }}" width="100%" class="mt-3">
+    <img src="{{ $sideBanner->getMedia('banners')->first()->getUrl() }}" width="100%" class="mt-3 no-mobile">
   @endif
 </div>
   <div class="col-sm-9">
@@ -98,9 +98,9 @@
     </div>
     
     <h4 style="font-weight: 800;" class="mt-5">Similar Spares</h4>
-    <div class="row g-2 mb-3">
+    <div class="row g-2 mb-3 owl-carousel owl-theme">
       @foreach($similarProducts as $similarProduct)
-      <x-product-thumbnail :product="$similarProduct" class="col-sm-6 col-md-4 col-lg-3"></x-product-thumbnail>
+      <x-product-thumbnail :product="$similarProduct" class="col-sm-6 col-md-4 col-lg-3 item"></x-product-thumbnail>
       @endforeach
     </div>
 
@@ -156,4 +156,35 @@
         $('.rating').rating();
       });
 </script>
+
+<script>
+            $(document).ready(function() {
+              var owl = $('.owl-carousel');
+              owl.owlCarousel({
+                loop: true,
+                margin: 15,
+                autoplay: true,
+                autoplayTimeout: 1000,
+                autoplayHoverPause: true,
+                nav:false,
+                dots:false,
+                responsive: {
+                              0: {
+                                items: 2
+                              },
+                              600: {
+                                items: 3
+                              },
+                              1000: {
+                                items: 4
+                              }}
+              });
+              $('.play').on('click', function() {
+                owl.trigger('play.owl.autoplay', [1000])
+              })
+              $('.stop').on('click', function() {
+                owl.trigger('stop.owl.autoplay')
+              })
+            })
+          </script>
 @endsection

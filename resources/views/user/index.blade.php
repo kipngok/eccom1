@@ -10,7 +10,7 @@
       </div>
 	  <div class="container">
 	  <div class="row">
-	  <div class="col-sm-12">
+	  <div class="col-sm-12 over-flow">
 	  <table class="table table-bordered">
 	 <thead>
 	<tr>
@@ -31,7 +31,9 @@
 				
 			</tbody>
 		</table>
-		{{$users->links()}}
+		<div class="over-flow mt-5">
+			{{$users->links()}}
+		</div>
 	</div>
 </div>
 </div>

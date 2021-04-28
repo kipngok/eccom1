@@ -7,7 +7,7 @@
 <div class="row headbox">
   <div class="col-sm-3">
     <a href="{{ url('/') }}" style="padding: 0px;">
-    <img src="{{ asset('img/sukilogo.png') }}" alt="SUKISPARES" style="height:60px; max-width: 160px;">
+    <img src="{{ asset('img/sukilogo.png') }}" alt="SUKISPARES" class="logo" style="height:60px; max-width: 160px;">
     </a>
   </div>
   <div class="col-sm-5">
@@ -24,7 +24,7 @@
         <button class="btn btn-sm btn-warning" type="submit"><i class="fa fa-search"></i></button>
         </div>
       </form>
-      <span style="color: #FFF; font-size: 12px; display: block;">Search for your spares here. Eg: Subaru XV Oil Filter</span>
+      <span style="color: #FFF; font-size: 12px; display: block;" class="no-mobile">Search for your spares here. Eg: Subaru XV Oil Filter</span>
   </div>
   <div class="col-sm-4" style="text-align: right;">
     <div class="hm-minicart"></div>
@@ -45,6 +45,8 @@
       <li class="nav-item"><a href="/about" class="nav-link">About us</a></li>
       <li class="nav-item"><a href="/contact" class="nav-link">Contact us</a></li>
       </ul>
+      @include('includes/mobile-menu')
+
     <div class="navbar-nav" style="margin-left: 0px; margin-right: 100px;">
                  <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->

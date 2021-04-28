@@ -4,6 +4,7 @@
 <div class="row justify-content-center">
 	<div class="col-sm-12">
         <h4 style="font-weight: 800; margin-top: 50px; margin-bottom: 20px;">{{ Cart::instance('default')->count() }} item(s) in Shopping Cart</h4>
+        <div class="over-flow">
         <div id="cart">
 		<table class="table table-bordered">
     		<thead>
@@ -48,6 +49,7 @@
             </tbody>
 		</table>
 	</div>
+    </div>
 </div>
 </div>
 <div class="row">

@@ -4,7 +4,7 @@
 <div class="container">
 <div class="row g-3">
     <div class="col-sm-3">
-        <x-categories-menu :categories="$categories" class="card shadow-sm"></x-categories-menu>
+        <x-categories-menu :categories="$categories" class="card shadow-sm no-mobile"></x-categories-menu>
     </div>
     <div class="col-sm-6">
 <div id="homeSlider" class="carousel slide" data-bs-ride="carousel">
@@ -33,13 +33,16 @@
   </a>
 </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-3 no-mobile">
         @foreach($thumbBanners as $banner)
-        <a href="{{$banner->url}}">
         <div class="thumb-banner">
+            <div class="thumb-caption">
+            <h5>{{$banner->heading}}</h5>
+            <h6>{{$banner->subHeading}}</h6>
+            <a href="{{$banner->url}}" class="btn btn-sm btn-warning">SHOP NOW</a>
+            </div>
             <img src="{{ $banner->getMedia('banners')->first()->getUrl() }}" width="100%" align="{{$banner->title}}">
         </div>
-        </a>
         @endforeach
     </div>
 </div>
@@ -60,20 +63,20 @@
 <h4 class="section-heading" class="mt-3"><i class="fa fa-table"></i> FEATURED PRODUCTS</h4>
 </div>
 </div>
-<div class="row mb-5 g-3">
+<div class="row mb-5 g-3 owl-carousel owl-theme">
     @foreach($featuredProducts as $featuredProduct)
-    <x-product-thumbnail :product="$featuredProduct" class="col-sm-6 col-md-4 col-lg-3"></x-product-thumbnail>
+    <x-product-thumbnail :product="$featuredProduct" class="col-sm-6 col-md-4 col-lg-3 item"></x-product-thumbnail>
     @endforeach
 </div>
 @if(isset($stretchBanner))
-<div class="row mb-3">
+<div class="row mb-3 no-mobile">
     <div class="col-sm-12">
       <img src="{{ $stretchBanner->getMedia('banners')->first()->getUrl() }}" width="100%">
     </div>
   </div>
 @endif
 <div class="row">
-    <div class="col-sm-12">
+<div class="col-sm-12">
 <h4 class="section-heading" class="mt-3"><i class="fa fa-table"></i> POPULAR CAR MODELS</h4>
 </div>
 </div>
@@ -94,7 +97,7 @@
 <div class="tab-pane @if($x<=0) active @endif" id="D{{$make->id}}" role="tabpanel" aria-labelledby="D{{$make->id}}-tab">
   <div class="row g-3 mt-1"> 
     @foreach($make->products()->take(4)->get() as $makeProduct)
-    <x-product-thumbnail :product="$makeProduct" class="col-sm-6 col-md-4 col-lg-3"></x-product-thumbnail>
+    <x-product-thumbnail :product="$makeProduct" class="col-sm-6 col-md-4 col-lg-3 half"></x-product-thumbnail>
     @endforeach
 </div>
 </div>
@@ -119,7 +122,7 @@
                 dots:false,
                 responsive: {
                               0: {
-                                items: 1
+                                items: 2
                               },
                               600: {
                                 items: 3
