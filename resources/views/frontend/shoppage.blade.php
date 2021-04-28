@@ -3,9 +3,9 @@
 <div class="container">
 <div class="row">
 <div class="col-sm-3">
-<x-categories-menu :categories="$categories" class="card mt-3 shadow-sm"></x-categories-menu>
+<x-categories-menu :categories="$categories" class="card mt-3 shadow-sm no-mobile"></x-categories-menu>
 @if(isset($sideBanner))
-<img src="{{ $sideBanner->getMedia('banners')->first()->getUrl() }}" width="100%" class="mt-3">
+<img src="{{ $sideBanner->getMedia('banners')->first()->getUrl() }}" width="100%" class="mt-3 no-mobile">
 @endif
 </div>
 <div class="col-sm-9 p-0">
@@ -62,7 +62,9 @@
   <x-product-thumbnail :product="$product" class="col-sm-6 col-md-4 col-lg-3"></x-product-thumbnail>
   @endforeach
   </div>
+  <div class="over-flow  mt-5">
   {{$products->links()}}
+</div>
 </div>
 </div>
 </div>

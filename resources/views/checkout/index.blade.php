@@ -45,6 +45,7 @@
     </div>
     <div class="col-sm-6">
         <h4 style="font-weight: 800" class="mt-5">Your Order</h4>
+        <div class="over-flow">
         <table class="table table-bordered">
     		<thead>
         		<tr> 
@@ -68,6 +69,7 @@
                 @endforeach
             </tbody>
 		</table>
+        </div>
         <div id="total">
             <table class="table table-condensed table-bordered mt-2 mb-5">
                 <tbody>

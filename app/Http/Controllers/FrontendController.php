@@ -55,8 +55,8 @@ class FrontendController extends Controller
          $sliders=Banner::where('location','=','slider')->where('status','=','Active')->orderBy('created_at','desc')->take(4)->get();
          $thumbBanners=Banner::where('location','=','Thumbnail Banner')->where('status','=','Active')->orderBy('created_at','desc')->take(3)->get();
          $stretchBanner=Banner::where('location','=','Stretch Banner')->where('status','=','Active')->orderBy('created_at','desc')->first();
-         $newProducts=Product::orderBy('created_at','desc')->take(16)->get();
-         $featuredProducts=Product::where('featured','=','1')->orderBy('created_at','desc')->take(4)->get();
+         $newProducts=Product::orderBy('created_at','desc')->take(25)->get();
+         $featuredProducts=Product::where('featured','=','1')->orderBy('created_at','desc')->take(25)->get();
          $featuredMakes=Make::where('is_featured','=','1')->get();
          $categories=Category::all();
          return view('welcome',compact('sliders', 'thumbBanners', 'newProducts', 'featuredProducts', 'featuredMakes','categories','stretchBanner'));
@@ -86,7 +86,7 @@ class FrontendController extends Controller
         $product=Product::where('slug','=',$slug)->first();
         if(!isset($product)){abort(404);}
         $categories=Category::all();
-        $similarProducts = Product::where('sub_category_id','=',$product->sub_category_id)->take(4)->get();
+        $similarProducts = Product::where('sub_category_id','=',$product->sub_category_id)->orderBy('created_at','desc')->take(16)->get();
         $reviews=$product->reviews()->orderBy('created_at','desc')->paginate(3);
         $sideBanner=Banner::where('location','=','Side Menu Banner')->where('status','=','Active')->orderBy('created_at','desc')->first();
         return view('frontend.singleproduct', compact('similarProducts','product','categories','reviews','sideBanner'));

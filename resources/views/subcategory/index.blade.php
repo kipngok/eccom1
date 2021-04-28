@@ -11,7 +11,7 @@
     </div>
 <div class="container">
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12 over-flow">
         <table class="table table-bordered">
         <thead>
         <tr> 
@@ -34,8 +34,9 @@
         @endforeach
         </tbody>
         </table>
+        <div class="over-flow mt-5">
         {{$subCategories->links()}}
- 
+    </div>
     </div>
 </div>
 </div>
