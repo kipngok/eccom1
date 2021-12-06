@@ -27,8 +27,8 @@ class CreateProductsTable extends Migration
             $table->string('image2')->nullable();
             $table->string('image3')->nullable();
             $table->string('image4')->nullable();
-            $table->integer('make_id');
-            $table->integer('model_id');
+            $table->integer('make_id')->nullable();
+            $table->integer('model_id')->nullable();
             $table->integer('year')->nullable();
             $table->string('engine')->nullable();
             $table->string('fuel')->nullable();

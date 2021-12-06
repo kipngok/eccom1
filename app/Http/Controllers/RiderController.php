@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Rider;
 use Illuminate\Http\Request;
+use Auth;
 
 class RiderController extends Controller
 {
@@ -30,6 +31,14 @@ class RiderController extends Controller
         $users=User::all();
         return view('rider.create', compact('users'));
     }
+    
+    public function registerRider()
+    {   if(isset(Auth::user()->rider->id)){
+         return redirect('/rider/'.Auth::user()->rider->id);
+         }
+        return view('rider.register');
+    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -39,7 +48,6 @@ class RiderController extends Controller
      */
     public function store(Request $request)
      {
-        $this->authorize('create', Rider::class);
         $this->validate(request(),[
         'user_id'=>'required',
         'reg_no'=>'required',
@@ -63,7 +71,6 @@ class RiderController extends Controller
     public function show(Rider $rider)
     {
         //
-        $this->authorize('view', $rider);
         return view('rider.show', compact('rider'));
     }
 
@@ -89,7 +96,7 @@ class RiderController extends Controller
     public function update(Request $request, Rider $rider)
     { 
         $this->authorize('update', $rider);
-        $this->validate($request(),[
+        $this->validate(request(),[
         'user_id'=>'required',
         'reg_no'=>'required',
         'type'=>'required',

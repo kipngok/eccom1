@@ -9,12 +9,16 @@ class Order extends Model
 {
 	
     use HasFactory;
-    protected $fillable = ['id', 'user_id', 'billing_email', 'billing_name', 'billing_address', 'billing_city','billing_postalcode', 'billing_phone', 'billing_discount', 'billing_discount_code','billing_subtotal','billing_tax', 'billing_total', 'shipping_city', 'shipping_location', 'shipping_latitude', 'shipping_longitude','payment_gateway', 'status', 'rider_id'];
+    protected $fillable = ['id', 'user_id', 'name', 'email', 'phone', 'place_id', 'latitude', 'longitude', 'location_description', 'discount', 'discount_code', 'subtotal', 'tax', 'total', 'payment_gateway', 'paying_number', 'status', 'is_paid', 'rider_id','affiliate_code'];
+
 
     public function user(){
-        return $this->hasMany('App\Models\User', 'id','user_id');
+        return $this->hasOne('App\Models\User', 'id','user_id');
     }
     public function rider(){
-        return $this->hasMany('App\Models\Rider', 'id','rider_id');
+        return $this->hasOne('App\Models\Rider', 'id','rider_id');
+    }
+    public function orderItems(){
+        return $this->hasMany('App\Models\OrderItem', 'order_id','id');
     }
 }

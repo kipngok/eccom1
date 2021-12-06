@@ -10,11 +10,12 @@
     </div>
 <div class="container">
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12 over-flow">
         <table class="table table-bordered">
             <thead>
                 <tr> 
                     <th>NO</th>  
+                    <th>Icon</th>
                     <th>Category name</th>
                     <th>Slug</th>
                     <th>Order</th>
@@ -25,6 +26,7 @@
                 @foreach($categories as $category) 
                 <tr>
                     <td>{{ ++$i }}</td>
+                    <td><img src="{{$category->icon}}" width="20px"></td>
                     <td>{{$category->name}}</td>
                     <td>{{$category->slug}}</td>
                     <td>{{$category->order}}</td>
@@ -33,7 +35,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="over-flow  mt-5 mb-5">
         {{$categories->links()}}
+        </div>
     </div>
 </div>
 </div>

@@ -50,7 +50,8 @@ class SubCategoryController extends Controller
         $this->authorize('create', SubCategory::class);
         $this->validate(request(),[
         'name'=>'required',
-        'category_id'=>'required'
+        'category_id'=>'required',
+        'slug'=>'required|unique:sub_categories'
         ]);
         $input = $request->all();
         $subCategory=SubCategory::create( $input);
@@ -79,7 +80,8 @@ class SubCategoryController extends Controller
     public function edit(SubCategory $subCategory)
     {
         $this->authorize('update', $subCategory);
-        return view('subCategory.edit', compact('subCategory'));
+        $categories = Category::all();
+        return view('subCategory.edit', compact('subCategory','categories'));
     }
 
     /**
@@ -92,9 +94,10 @@ class SubCategoryController extends Controller
     public function update(Request $request, SubCategory $subCategory)
     {
         $this->authorize('update', $subCategory);
-        $this->validate($request(),[
+        $this->validate(request(),[
         'name'=>'required',
-        'category_id'=>'required'
+        'category_id'=>'required',
+        'slug'=>'required'
         ]);
         $input = $request->all();
         $subCategory->update($input);

@@ -15,28 +15,29 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->string('billing_email');
-            $table->string('billing_name');
-            $table->string('billing_address');
-            $table->string('billing_city');
-            $table->string('billing_postalcode');
-            $table->string('billing_phone');
-            $table->integer('billing_discount');
-            $table->integer('billing_discount_code');
-            $table->integer('billing_subtotal');
-            $table->integer('billing_tax');
-            $table->integer('billing_total');
-            $table->string('shipping_city');
-            $table->string('shipping_location');
-            $table->string('shipping_latitude');
-            $table->string('shipping_longitude');
-            $table->string('payment_gateway');
-            $table->string('status');
+            $table->integer('user_id')->nullable();
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('place_id');
+            $table->string('latitude');
+            $table->string('longitude');
+            $table->string('location_description')->nullable();
+            $table->float('discount')->nullable();
+            $table->string('discount_code')->nullable();
+            $table->float('subtotal');
+            $table->float('tax')->nullable();
+            $table->float('total');
+            $table->string('payment_gateway')->nullable();
+            $table->string('status')->nullable();
+            $table->integer('is_paid')->nullable();
             $table->integer('rider_id');
+            $table->string('affiliate_code')->nullable();
+            $table->string('paying_number')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

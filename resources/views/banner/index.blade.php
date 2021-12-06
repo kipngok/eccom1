@@ -8,7 +8,7 @@
     </div>
 <div class="container">
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-sm-12 over-flow">
     <table class="table table-bordered">
         <thead>
             <tr> 
@@ -24,7 +24,11 @@
             @foreach($banners as $banner) 
                 <tr>
                     <td>{{ ++$i }}</td>
-                    <td> <img src="{{ asset('public/images/' . $banner->image) }}" alt="image" height="50px"; width="50px"; /> </td>
+                    @if($banner->getMedia('banners')->first())
+                    <td><img height="50" src="{{$banner->getMedia('banners')->first()->getUrl()}}"></td>
+                    @else
+                    <td><img height="50" src="/img/not-found.png"></td>
+                    @endif
                     <td>{{$banner->title}}</td>
                     <td>{{$banner->url}}</td>
                     <td>{{$banner->location}}</td>
@@ -33,7 +37,9 @@
             @endforeach
         </tbody>
     </table>
+    <div class="over-flow  mt-5 mb-5"> 
     {{$banners->links()}}
+    </div>
   </div>
 </div>
 </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class BannerController extends Controller
@@ -31,7 +33,10 @@ class BannerController extends Controller
     public function create()
     { 
         $this->authorize('create', Banner::class);
-        return view('banner.create');
+        $categories = Category::all();
+        $subCategories = SubCategory::all();
+        
+        return view('banner.create', compact('categories', 'subCategories'));
     }
 
     /**
@@ -44,23 +49,14 @@ class BannerController extends Controller
      {
         $this->authorize('create', Banner::class);
         $this->validate(request(), [
-
         'title'=>'required',
         'url'=>'required',
         'location'=>'required',
         'image'=>'required|image|mimes:jpg,jpeg,png,gif'
         ]);
-    
-        $fileName = null;
-        if (request()->hasFile('image')) {
-            $file = request()->file('image');
-            $fileName =md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-            $file->move('./public/images/',$fileName);
-        }
-
        $input=$request->all();
-       $input['image']=$fileName;
        $banner=Banner::create($input);
+       $banner->addMediaFromRequest('image')->toMediaCollection('banners');
        return redirect('/banner/'.$banner->id);
 
     }
@@ -101,24 +97,11 @@ class BannerController extends Controller
         //
 
         $this->authorize('update', $banner);
-         $this->validate(request(), [
-        'title'=>'required',
-        'url'=>'required',
-        'location'=>'required',
-        'image'=>'required|image|mimes:jpg,jpeg,png,gif'
-        ]);
-    
-        $fileName = null;
-        if (request()->hasFile('image')) {
-            $file = request()->file('image');
-            $fileName =md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-            $file->move('./public/images/',$fileName);
-        }
-
-       $input=$request->all();
-       $input['image']=$fileName;
-       $banner->update($input);
-
+        $input=$request->all();
+        if(isset($input['image'])){
+            $banner->clearMediaCollection('banners');
+            $banner->addMediaFromRequest('image')->toMediaCollection('banners');}
+            $banner->update($input);
        return redirect('/banner/'.$banner->id);
     }
 

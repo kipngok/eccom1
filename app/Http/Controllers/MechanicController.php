@@ -96,7 +96,7 @@ class MechanicController extends Controller
     public function update(Request $request, Mechanic $mechanic){
 
         $this->authorize('update', $mechanic);
-        $this->validate($request(),[
+        $this->validate(request(),[
         'location'=>'required',
         'latitude'=>'required',
         'longitude'=>'required',

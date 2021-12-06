@@ -9,7 +9,7 @@
         <div class="row">
         <div class="col-sm-6">
         <table class="table table-condensed table-striped table-bordered">
-            <tbody>
+            <tbody> 
                 <tr>
                     <th>Category name</th>
                     <td>{{$category->name}}</td>
@@ -21,6 +21,10 @@
                 <tr>
                     <th>Order</th>
                     <td>{{$category->order}}</td>
+                </tr>
+                <tr>
+                    <th>Icon</th>
+                    <td><img src="{{$category->icon}}"></td>
                 </tr>
             </tbody>
         </table>

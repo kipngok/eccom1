@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Coupon;
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CouponController extends Controller
 {
@@ -17,8 +18,7 @@ class CouponController extends Controller
         $this->authorize('viewAny', Coupon::class);
         $coupons = Coupon::orderBy('created_at','desc')->paginate(20);
         return view('coupon.index',compact('coupons'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-        
+            ->with('i', (request()->input('page', 1) - 1) * 5);  
     }
 
     /**
@@ -30,6 +30,33 @@ class CouponController extends Controller
     {
         $this->authorize('create', Coupon::class);
         return view('coupon.create');
+    }
+
+    public function check(Request $request)
+    {
+        $input=$request->all();
+        $coupon=Coupon::where('code','=',$input['code'])->first();
+        if(isset($coupon) && $coupon->expiry_date >=date('Y-m-d')){
+            session()->put('coupon', [
+                'name' => $coupon->code,
+                'discount' => $this->calculateDiscount($coupon,Cart::subtotal()),
+            ]);
+            return ['status'=>'valid','message'=>'<i class="fa fa-check"></i> Coupon code was applied succesfully'];
+        }
+        else{
+            $request->session()->forget('coupon');
+            return ['status'=>'invalid','message'=>'<i class="fa fa-times"></i> Coupon code is invalid'];
+        }
+    }
+
+    public function calculateDiscount($coupon,$amount){
+        if($coupon->type =='Percentage'){
+            $discount=$amount*$coupon->value/100;
+        }
+        else{
+            $discount=$coupon->value;
+        }
+        return $discount;
     }
 
     /**
@@ -87,7 +114,7 @@ class CouponController extends Controller
     public function update(Request $request, Coupon $coupon)
     {
         $this->authorize('update', $coupon);
-        $this->validate($request(), [
+        $this->validate(request(), [
         'code'=>'required',
         'type'=>'required',
         'value'=>'required',

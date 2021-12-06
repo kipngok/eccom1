@@ -9,6 +9,9 @@
 <div class="container">
     <div class="row">
     <div class="col-sm-6">
+    @if(isset(Auth::user()->rider->id) && Auth::user()->rider->id == $rider->id)
+    <div class="alert alert-success"> <i class="fa fa-check"></i> Your Rider Account is currently active</div>
+    @endif
     <table class="table table-condensed table-striped table-bordered">
     <tbody>
     <tr>
